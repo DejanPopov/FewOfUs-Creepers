@@ -27,9 +27,6 @@ public class AIWaypointNetworkEditor : Editor
             }
         }
 
-
-
-
         if (network.DisplayMode == PathDisplayMode.Connections)
         {
             //DrawPolyLine - takes Array of Vector3 points
@@ -74,6 +71,13 @@ public class AIWaypointNetworkEditor : Editor
                 Vector3 from = network.waypoints[network.UIStart].position;
                 //We take positions of waypionts to create end path for AI
                 Vector3 to = network.waypoints[network.UIEnd].position;
+
+                //Calculates path from waypoints, it takes vector,vector,mask, NavMesh reference
+                NavMesh.CalculatePath(from, to, NavMesh.AllAreas, path);
+
+                //Takes corners for ploting paths
+                Handles.color = Color.yellow;
+                Handles.DrawPolyLine(path.corners);
             }
 
         }
