@@ -79,7 +79,6 @@ public class AIWaypointNetworkEditor : Editor
                 Handles.color = Color.yellow;
                 Handles.DrawPolyLine(path.corners);
             }
-
         }
     }
 }
