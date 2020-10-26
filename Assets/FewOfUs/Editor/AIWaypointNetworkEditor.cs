@@ -40,7 +40,7 @@ public class AIWaypointNetworkEditor : Editor
             if (network.waypoints[index] != null)
             {
                 //If it is not null reference we will get index in linePoints
-                linePoints[i] = network.waypoints[index].position;
+               linePoints[i] = network.waypoints[index].position;
             }
             else
             {
@@ -48,6 +48,9 @@ public class AIWaypointNetworkEditor : Editor
                 //infinity and wee will be abale to see that graphicaly
                 linePoints[i] = new Vector3(Mathf.Infinity, Mathf.Infinity, Mathf.Infinity);
             }
+
+            //Lines colour
+            Handles.color = Color.cyan;
 
             //This will draw the lines between waypoints
             Handles.DrawPolyLine(linePoints);
