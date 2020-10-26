@@ -13,6 +13,10 @@ public class AIWaypointNetwork : MonoBehaviour
 {
     public PathDisplayMode DisplayMode = PathDisplayMode.Connections;
 
+    //For waypoints
+    public int UIStart = 0;
+    public int UIEnd = 0;
+
 
 
     public List<Transform> waypoints = new List<Transform>();
