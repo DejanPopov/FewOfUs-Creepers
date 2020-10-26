@@ -17,7 +17,16 @@ public class AIWaypointNetworkEditor : Editor
         AIWaypointNetwork network = (AIWaypointNetwork) target;
 
         //Drop menu
-        network.DisplayMode = (PathDisplayMode)EditorGUILayout.EnumPopup(network.DisplayMode);
+        network.DisplayMode = (PathDisplayMode)EditorGUILayout.EnumPopup("Display mode" ,network.DisplayMode);
+
+        //The network.waypoints.Count - 1 is because it counting from 0
+        //so it has 6 waypoints (0,1,2,3,4,5)
+        //Making sliders for start point of path
+        network.UIStart = EditorGUILayout.IntSlider("Waypoint Start", 
+            network.UIStart, 0 , network.waypoints.Count - 1);
+        //Making sliders for end point of path
+        network.UIEnd = EditorGUILayout.IntSlider("Waypoint End",
+            network.UIEnd, 0, network.waypoints.Count - 1);
 
         DrawDefaultInspector();
        // base.OnInspectorGUI();
