@@ -36,6 +36,22 @@ public class AIWaypointNetworkEditor : Editor
             // when i = 6 (the num,ber of waypoints) is not valid because in the Array we have
             //from 0 to 5, so when i = 6 we want that to be the first index (0,1,2,3,4,5,1)
             int index = i != network.waypoints.Count ? i : 0;
+
+            if (network.waypoints[index] != null)
+            {
+                //If it is not null reference we will get index in linePoints
+                linePoints[i] = network.waypoints[index].position;
+            }
+            else
+            {
+                //If it is null this code will make sure that the lines will go to
+                //infinity and wee will be abale to see that graphicaly
+                linePoints[i] = new Vector3(Mathf.Infinity, Mathf.Infinity, Mathf.Infinity);
+            }
+
+            //This will draw the lines between waypoints
+            Handles.DrawPolyLine(linePoints);
         }
     }
 }
+ 
