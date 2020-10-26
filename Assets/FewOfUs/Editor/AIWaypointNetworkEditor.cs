@@ -45,7 +45,7 @@ public class AIWaypointNetworkEditor : Editor
     private void OnSceneGUI()
     {
         //Casting (Unity reference documentation)
-        AIWaypointNetwork network = (AIWaypointNetwork)target;
+        AIWaypointNetwork network = (AIWaypointNetwork) target;
 
         //Looping through waypoints
         for (int i = 0; i < network.waypoints.Count; i++)
