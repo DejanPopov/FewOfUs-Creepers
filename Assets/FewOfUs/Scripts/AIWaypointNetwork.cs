@@ -5,4 +5,5 @@ using UnityEngine;
 public class AIWaypointNetwork : MonoBehaviour
 {
     public List<Transform> waypoints = new List<Transform>();
+
 }
