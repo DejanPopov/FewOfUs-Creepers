@@ -25,35 +25,49 @@ public class AIWaypointNetworkEditor : Editor
             }
         }
 
-        //DrawPolyLine - takes Array of Vector3 points
-        //We pass numbers of waypoints + 1 because last will be duplicate of first waypoint
-        //(network.waypoints.Count + 1)
-        //and that will add aditional line to connect everything
-        Vector3[] linePoints = new Vector3[network.waypoints.Count + 1];
 
-        for (int i = 0; i < network.waypoints.Count; i++)
+
+
+        if (network.DisplayMode == PathDisplayMode.Connections)
         {
-            // when i = 6 (the num,ber of waypoints) is not valid because in the Array we have
-            //from 0 to 5, so when i = 6 we want that to be the first index (0,1,2,3,4,5,1)
-            int index = i != network.waypoints.Count ? i : 0;
+            //DrawPolyLine - takes Array of Vector3 points
+            //We pass numbers of waypoints + 1 because last will be duplicate of first waypoint
+            //(network.waypoints.Count + 1)
+            //and that will add aditional line to connect everything
+            Vector3[] linePoints = new Vector3[network.waypoints.Count + 1];
 
-            if (network.waypoints[index] != null)
+            for (int i = 0; i < network.waypoints.Count; i++)
             {
-                //If it is not null reference we will get index in linePoints
-               linePoints[i] = network.waypoints[index].position;
+                // when i = 6 (the num,ber of waypoints) is not valid because in the Array we have
+                //from 0 to 5, so when i = 6 we want that to be the first index (0,1,2,3,4,5,1)
+                int index = i != network.waypoints.Count ? i : 0;
+
+                if (network.waypoints[index] != null)
+                {
+                    //If it is not null reference we will get index in linePoints
+                    linePoints[i] = network.waypoints[index].position;
+                }
+                else
+                {
+                    //If it is null this code will make sure that the lines will go to
+                    //infinity and wee will be abale to see that graphicaly
+                    linePoints[i] = new Vector3(Mathf.Infinity, Mathf.Infinity, Mathf.Infinity);
+                }
+
+                //Lines colour
+                Handles.color = Color.cyan;
+
+                //This will draw the lines between waypoints
+                Handles.DrawPolyLine(linePoints);
             }
-            else
+        }
+        else
+        {
+            if (network.DisplayMode == PathDisplayMode.Paths)
             {
-                //If it is null this code will make sure that the lines will go to
-                //infinity and wee will be abale to see that graphicaly
-                linePoints[i] = new Vector3(Mathf.Infinity, Mathf.Infinity, Mathf.Infinity);
+                //CODE
             }
 
-            //Lines colour
-            Handles.color = Color.cyan;
-
-            //This will draw the lines between waypoints
-            Handles.DrawPolyLine(linePoints);
         }
     }
 }
