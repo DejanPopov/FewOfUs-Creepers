@@ -26,6 +26,13 @@ public class NavAgentExample : MonoBehaviour
         //NavMesh agent reference
         navAgent = GetComponent<NavMeshAgent>();
 
+        //This code is to see for fun that if the animated enemy is not moving
+        //but NavMeshAgent is moving then this is probably whats happend
+        /*
+        navAgent.updatePosition = false;
+        navAgent.updateRotation = false;
+        */
+
         if (WaypointNetwork == null)
         {
             return;
@@ -68,27 +75,23 @@ public class NavAgentExample : MonoBehaviour
         {
             return;
         }
-        
-            
-            int incStep = increment ? 1 : 0;
-            Transform nextWaypointTransform = null;
 
-            //If there is gap in the list we will step over it
-            while (nextWaypointTransform == null)
-            {
-                int nextWaypoint = (CurrentIndex + incStep >= 
-                    WaypointNetwork.waypoints.Count) ? 0 : CurrentIndex + incStep;
+        int incStep = increment ? 1 : 0;
 
-                nextWaypointTransform = WaypointNetwork.waypoints[nextWaypoint];
+        //If there is gap in the list we will step over it        
+        int nextWaypoint = (CurrentIndex + incStep >=
+            WaypointNetwork.waypoints.Count) ? 0 : CurrentIndex + incStep;
 
-                if (nextWaypointTransform != null)
-                {
-                    CurrentIndex = nextWaypoint;
-                    navAgent.destination = nextWaypointTransform.position;
-                    return;
-                }
-            }
+        Transform nextWaypointTransform = WaypointNetwork.waypoints[nextWaypoint];
 
-            CurrentIndex++;
+        if (nextWaypointTransform != null)
+        {
+            CurrentIndex = nextWaypoint;
+            navAgent.destination = nextWaypointTransform.position;
+            return;
+        }
+
+
+        CurrentIndex++;
     }
 }
