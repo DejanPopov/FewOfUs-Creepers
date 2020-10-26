@@ -8,15 +8,17 @@ using UnityEditor;
 [CustomEditor(typeof(AIWaypointNetwork))]
 public class AIWaypointNetworkEditor : Editor
 {
-    // Start is called before the first frame update
-    void Start()
+    //
+    private void OnSceneGUI()
     {
-        
-    }
+        //Casting (Unity reference documentation)
+        AIWaypointNetwork network = (AIWaypointNetwork)target;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        //Looping through waypoints
+        for (int i = 0; i < network.waypoints.Count; i++)
+        {
+            //Label needs 2 parameters - Vector and sttring
+            Handles.Label(network.waypoints[i].position, "Waypoint" + i.ToString());
+        }
     }
 }
