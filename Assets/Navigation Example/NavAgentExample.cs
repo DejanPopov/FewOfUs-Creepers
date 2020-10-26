@@ -43,8 +43,11 @@ public class NavAgentExample : MonoBehaviour
         PathStale = navAgent.isPathStale;
         PathStatus = navAgent.pathStatus;
 
+        //We can use this || PathStatus == NavMeshPathStatus.PathPartial into
+        //if () statement and then the agent will not go to invalid path that cant reach
         if ((!HasPath && !PathPending) ||
-            PathStatus == NavMeshPathStatus.PathInvalid)
+            PathStatus == NavMeshPathStatus.PathInvalid /*||
+            PathStatus == NavMeshPathStatus.PathPartial*/)
         {
             SetNextDestionation(true);
         }
