@@ -8,9 +8,11 @@ public class NavAgentExample : MonoBehaviour
 {
     //Option that we can assign Waypoint Network
     public AIWaypointNetwork WaypointNetwork = null;
-
     //Waypoint number
     public int CurrentIndex = 0;
+    //For getting to other destinations
+    public bool HasPath = false;
+    public bool PathPending = false;
 
     private NavMeshAgent navAgent = null;
 
@@ -31,7 +33,14 @@ public class NavAgentExample : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        //Will show in inspector
+        HasPath = navAgent.hasPath;
+        PathPending = navAgent.pathPending;
+
+        if (!HasPath && !PathPending)
+        {
+            SetNextDestionation(true);
+        }
     }
 
     //This function will make agent to waypoints 
