@@ -43,7 +43,8 @@ public class NavAgentExample : MonoBehaviour
         PathStale = navAgent.isPathStale;
         PathStatus = navAgent.pathStatus;
 
-        if (!HasPath && !PathPending)
+        if ((!HasPath && !PathPending) ||
+            PathStatus == NavMeshPathStatus.PathInvalid)
         {
             SetNextDestionation(true);
         }
