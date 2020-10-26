@@ -13,6 +13,10 @@ public class NavAgentExample : MonoBehaviour
     //For getting to other destinations
     public bool HasPath = false;
     public bool PathPending = false;
+    public bool PathStale = false;
+    //Path where zombies can climb to get to higher grounds or stand at that point
+    //before zombie gives up and goes to other waypoint
+    public NavMeshPathStatus PathStatus = NavMeshPathStatus.PathInvalid;
 
     private NavMeshAgent navAgent = null;
 
@@ -36,6 +40,8 @@ public class NavAgentExample : MonoBehaviour
         //Will show in inspector
         HasPath = navAgent.hasPath;
         PathPending = navAgent.pathPending;
+        PathStale = navAgent.isPathStale;
+        PathStatus = navAgent.pathStatus;
 
         if (!HasPath && !PathPending)
         {
