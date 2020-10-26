@@ -72,7 +72,5 @@ public class NavAgentExample : MonoBehaviour
             }
 
             CurrentIndex++;
-        
-        
     }
 }
