@@ -98,17 +98,22 @@ public class AIWaypointNetworkEditor : Editor
                 //For this to work we need using UnityEngine.AI;
                 NavMeshPath path = new NavMeshPath();
 
-                //We take positions of waypionts to create start path for AI
-                Vector3 from = network.waypoints[network.UIStart].position;
-                //We take positions of waypionts to create end path for AI
-                Vector3 to = network.waypoints[network.UIEnd].position;
+                //We will only use this code if UIStart and UIEnd is not null
+                if (network.waypoints[network.UIStart] != null &&
+                    network.waypoints[network.UIEnd] != null)
+                {
+                    //We take positions of waypionts to create start path for AI
+                    Vector3 from = network.waypoints[network.UIStart].position;
+                    //We take positions of waypionts to create end path for AI
+                    Vector3 to = network.waypoints[network.UIEnd].position;
 
-                //Calculates path from waypoints, it takes vector,vector,mask, NavMesh reference
-                NavMesh.CalculatePath(from, to, NavMesh.AllAreas, path);
+                    //Calculates path from waypoints, it takes vector,vector,mask, NavMesh reference
+                    NavMesh.CalculatePath(from, to, NavMesh.AllAreas, path);
 
-                //Takes corners for ploting paths
-                Handles.color = Color.yellow;
-                Handles.DrawPolyLine(path.corners);
+                    //Takes corners for ploting paths
+                    Handles.color = Color.yellow;
+                    Handles.DrawPolyLine(path.corners);
+                }
             }
         }
     }
