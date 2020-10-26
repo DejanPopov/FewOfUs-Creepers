@@ -41,6 +41,14 @@ public class NavAgentExample : MonoBehaviour
         {
             SetNextDestionation(true);
         }
+        else
+        {
+            //Stale path
+            if (navAgent.isPathStale)
+            {
+                SetNextDestionation(false);
+            }
+        }
     }
 
     //This function will make agent to waypoints 
