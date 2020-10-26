@@ -8,7 +8,7 @@ using UnityEditor;
 [CustomEditor(typeof(AIWaypointNetwork))]
 public class AIWaypointNetworkEditor : Editor
 {
-    //
+    //This will show in Unity name of waypoints and flags
     private void OnSceneGUI()
     {
         //Casting (Unity reference documentation)
