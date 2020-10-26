@@ -25,15 +25,45 @@ public class NavAgentExample : MonoBehaviour
             return;
         }
 
-        if (WaypointNetwork.waypoints[CurrentIndex] != null)
-        {
-            navAgent.destination = WaypointNetwork.waypoints[CurrentIndex].position;
-        }
+        SetNextDestionation(false);
     }
 
     // Update is called once per frame
     void Update()
     {
+        
+    }
+
+    //This function will make agent to waypoints 
+    void SetNextDestionation (bool increment)
+    {
+        if (!WaypointNetwork)
+        {
+            return;
+        }
+        
+            
+            int incStep = increment ? 1 : 0;
+            Transform nextWaypointTransform = null;
+
+            //If there is gap in the list we will step over it
+            while (nextWaypointTransform == null)
+            {
+                int nextWaypoint = (CurrentIndex + incStep >= 
+                    WaypointNetwork.waypoints.Count) ? 0 : CurrentIndex + incStep;
+
+                nextWaypointTransform = WaypointNetwork.waypoints[nextWaypoint];
+
+                if (nextWaypointTransform != null)
+                {
+                    CurrentIndex = nextWaypoint;
+                    navAgent.destination = nextWaypointTransform.position;
+                    return;
+                }
+            }
+
+            CurrentIndex++;
+        
         
     }
 }
