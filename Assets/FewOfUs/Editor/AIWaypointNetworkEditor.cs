@@ -10,6 +10,23 @@ using UnityEngine.AI;
 [CustomEditor(typeof(AIWaypointNetwork))]
 public class AIWaypointNetworkEditor : Editor
 {
+    //Making UIStart and UIEnd into graphicals sliders
+    public override void OnInspectorGUI()
+    {
+        //Reference to AIWaypointNetwork script
+        AIWaypointNetwork network = (AIWaypointNetwork) target;
+
+        //Drop menu
+        network.DisplayMode = (PathDisplayMode)EditorGUILayout.EnumPopup(network.DisplayMode);
+
+        DrawDefaultInspector();
+       // base.OnInspectorGUI();
+    }
+
+
+
+
+
     //This will show in Unity name of waypoints and flags
     private void OnSceneGUI()
     {
