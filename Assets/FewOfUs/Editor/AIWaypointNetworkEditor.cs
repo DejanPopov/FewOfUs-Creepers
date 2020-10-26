@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 //Editor class
 using UnityEditor;
+//NavMeshPath
+using UnityEngine.AI;
 
 //Editor class thats type of script that has list of waypoints
 [CustomEditor(typeof(AIWaypointNetwork))]
@@ -65,7 +67,13 @@ public class AIWaypointNetworkEditor : Editor
         {
             if (network.DisplayMode == PathDisplayMode.Paths)
             {
-                //CODE
+                //For this to work we need using UnityEngine.AI;
+                NavMeshPath path = new NavMeshPath();
+
+                //We take positions of waypionts to create start path for AI
+                Vector3 from = network.waypoints[network.UIStart].position;
+                //We take positions of waypionts to create end path for AI
+                Vector3 to = network.waypoints[network.UIEnd].position;
             }
 
         }
