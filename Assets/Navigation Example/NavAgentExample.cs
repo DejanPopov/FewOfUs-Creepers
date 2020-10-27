@@ -50,9 +50,10 @@ public class NavAgentExample : MonoBehaviour
         PathStale = navAgent.isPathStale;
         PathStatus = navAgent.pathStatus;
 
+        //!HasPath will be little buggy to use when agent is jumping across platforms
         //We can use this || PathStatus == NavMeshPathStatus.PathPartial into
         //if () statement and then the agent will not go to invalid path that cant reach
-        if ((!HasPath && !PathPending) ||
+        if ((/*!HasPath*/ navAgent.remainingDistance.Equals(0.0f) && !PathPending) ||
             PathStatus == NavMeshPathStatus.PathInvalid /*||
             PathStatus == NavMeshPathStatus.PathPartial*/)
         {
