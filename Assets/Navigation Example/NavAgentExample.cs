@@ -50,6 +50,13 @@ public class NavAgentExample : MonoBehaviour
         PathStale = navAgent.isPathStale;
         PathStatus = navAgent.pathStatus;
 
+        //This will be used for agent to start coroutine called JUMP
+        if (navAgent.isOnOffMeshLink)
+        {
+            StartCoroutine(Jump(2.0f));
+            return;
+        }
+
         //!HasPath will be little buggy to use when agent is jumping across platforms
         //We can use this || PathStatus == NavMeshPathStatus.PathPartial into
         //if () statement and then the agent will not go to invalid path that cant reach
@@ -66,6 +73,26 @@ public class NavAgentExample : MonoBehaviour
             {
                 SetNextDestionation(false);
             }
+        }
+    }
+
+    //Coroutine
+    IEnumerator Jump(float duration)
+    {
+        //Acess to offlink mesh data
+        OffMeshLinkData data = navAgent.currentOffMeshLinkData;
+        Vector3 startPos = navAgent.transform.position;
+        //Calculate position from transform and base offset of agent
+        Vector3 endPos = data.endPos + (navAgent.baseOffset * Vector3.up);
+
+        float time = 0.0f;
+
+        while (time <= duration)
+        {
+            float t = time / duration;
+            navAgent.transform.position = Vector3.Lerp(startPos, endPos, t);
+            time += Time.deltaTime;
+            yield return null;
         }
     }
 
