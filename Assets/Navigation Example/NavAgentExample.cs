@@ -18,6 +18,9 @@ public class NavAgentExample : MonoBehaviour
     //before zombie gives up and goes to other waypoint
     public NavMeshPathStatus PathStatus = NavMeshPathStatus.PathInvalid;
 
+    //Animation jump curve
+    public AnimationCurve JumpCurve = new AnimationCurve();
+
     private NavMeshAgent navAgent = null;
 
     // Start is called before the first frame update
@@ -94,6 +97,9 @@ public class NavAgentExample : MonoBehaviour
             time += Time.deltaTime;
             yield return null;
         }
+
+        //Agent will now know that he completed coruotine and will not stop
+        navAgent.CompleteOffMeshLink();
     }
 
     //This function will make agent to waypoints 
