@@ -56,7 +56,7 @@ public class NavAgentExample : MonoBehaviour
         //This will be used for agent to start coroutine called JUMP
         if (navAgent.isOnOffMeshLink)
         {
-            StartCoroutine(Jump(2.0f));
+            StartCoroutine(Jump(1.0f));
             return;
         }
 
@@ -93,7 +93,8 @@ public class NavAgentExample : MonoBehaviour
         while (time <= duration)
         {
             float t = time / duration;
-            navAgent.transform.position = Vector3.Lerp(startPos, endPos, t);
+            navAgent.transform.position = Vector3.Lerp(startPos, endPos, t) 
+                + (JumpCurve.Evaluate(t) * Vector3.up);
             time += Time.deltaTime;
             yield return null;
         }
