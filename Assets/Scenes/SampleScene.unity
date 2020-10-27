@@ -1532,11 +1532,43 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 488808, guid: 22e8e9479d52a604abc938e32f8c8873, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -19.45
+      value: -23.35
       objectReference: {fileID: 0}
     - target: {fileID: 488808, guid: 22e8e9479d52a604abc938e32f8c8873, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 11.39
+      value: 7.24
+      objectReference: {fileID: 0}
+    - target: {fileID: 488808, guid: 22e8e9479d52a604abc938e32f8c8873, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 9.23
+      objectReference: {fileID: 0}
+    - target: {fileID: 488808, guid: 22e8e9479d52a604abc938e32f8c8873, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.38742992
+      objectReference: {fileID: 0}
+    - target: {fileID: 488808, guid: 22e8e9479d52a604abc938e32f8c8873, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.5950422
+      objectReference: {fileID: 0}
+    - target: {fileID: 488808, guid: 22e8e9479d52a604abc938e32f8c8873, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.39590102
+      objectReference: {fileID: 0}
+    - target: {fileID: 488808, guid: 22e8e9479d52a604abc938e32f8c8873, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.58231026
+      objectReference: {fileID: 0}
+    - target: {fileID: 488808, guid: 22e8e9479d52a604abc938e32f8c8873, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 112.726
+      objectReference: {fileID: 0}
+    - target: {fileID: 488808, guid: 22e8e9479d52a604abc938e32f8c8873, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -180
+      objectReference: {fileID: 0}
+    - target: {fileID: 488808, guid: 22e8e9479d52a604abc938e32f8c8873, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -88.76099
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 22e8e9479d52a604abc938e32f8c8873, type: 3}
@@ -1890,6 +1922,39 @@ MonoBehaviour:
   PathPending: 0
   PathStale: 0
   PathStatus: 2
+  JumpCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.0014152527
+      inSlope: 7.355236
+      outSlope: 7.355236
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.036178384
+    - serializedVersion: 3
+      time: 0.5
+      value: 2
+      inSlope: -0.0007919073
+      outSlope: -0.0007919073
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.99805164
+      value: 0.008414386
+      inSlope: -8.218709
+      outSlope: -8.218709
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.048371933
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1825682383
 GameObject:
   m_ObjectHideFlags: 0
