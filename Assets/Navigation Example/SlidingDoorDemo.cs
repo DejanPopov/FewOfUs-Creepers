@@ -38,6 +38,7 @@ public class SlidingDoorDemo : MonoBehaviour
         //Door will open with Space bar key
         if (Input.GetKeyDown(KeyCode.Space) && doorState != DoorState.Animating)
         {
+            //This code is kinda funky and i cant debugg it at the moment 
            // StartCoroutine(AnimateDoor(doorState == DoorState.Closed)? DoorState.Open : DoorState.Closed);
         }
     }
