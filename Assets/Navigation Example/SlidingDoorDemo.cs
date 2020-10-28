@@ -38,13 +38,14 @@ public class SlidingDoorDemo : MonoBehaviour
         //Door will open with Space bar key
         if (Input.GetKeyDown(KeyCode.Space) && doorState != DoorState.Animating)
         {
-            StartCoroutine(AnimateDoor(doorState == DoorState.Open) ? DoorState.Closed : DoorState.Open);
+           // StartCoroutine(AnimateDoor(doorState == DoorState.Closed)? DoorState.Open : DoorState.Closed);
         }
     }
 
     IEnumerator AnimateDoor(DoorState newState)
     {
         doorState = DoorState.Animating;
+        //Timer
         float time = 0.0f;
         //Star and end position of interpolation
         Vector3 startPos = (newState == DoorState.Open) ? closedPos : openPos;
@@ -58,7 +59,9 @@ public class SlidingDoorDemo : MonoBehaviour
             yield return null;
         }
 
+        //Check to snap object at end position
         transformT.position = endPos;
+        //This will be new state for door
         doorState = newState;
     }
 }
