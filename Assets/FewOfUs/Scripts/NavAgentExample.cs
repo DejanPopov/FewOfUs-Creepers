@@ -58,6 +58,12 @@ public class NavAgentExample : MonoBehaviour
 
         //Cost between transforms for vector and velocity vector and normalize it
         Vector3 cross = Vector3.Cross(transform.forward, navAgent.desiredVelocity.normalized);
+        float horizontal = (cross.y < 0) ? -cross.magnitude : cross.magnitude;
+        horizontal = Mathf.Clamp(horizontal * 2.32f, -2.32f, 2.32f);
+
+        //Damping smoothes the values (0.1f)
+        animator.SetFloat("Horizontal", horizontal, 0.1f, Time.deltaTime);
+        animator.SetFloat("Vertical", navAgent.desiredVelocity.magnitude, 0.1f, Time.deltaTime);
 
         //This will not be used on zombies!
         //This will be used for agent to start coroutine called JUMP
