@@ -26,6 +26,11 @@ public class Controller : MonoBehaviour
         float xAxis = Input.GetAxis("Horizontal") * 2.32f;
         float yAxis = Input.GetAxis("Vertical") * 5.66f;
 
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            animator.SetTrigger(attackHash);
+        }
         //Seting values from inputs
         animator.SetFloat(horizontalHash, xAxis, 1.0f, Time.deltaTime);
         animator.SetFloat(verticalHash, yAxis, 1.0f, Time.deltaTime);
