@@ -123,11 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 23800000, guid: e517b4091de95c740820ead9d66bf8db, type: 2}
---- !u!4 &93823792 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6500602636823564693, guid: 158e0d3d66af29f49b67ec3262198a22, type: 3}
-  m_PrefabInstance: {fileID: 1562311602}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &294564708
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1215,6 +1210,10 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
+    - target: {fileID: 183038, guid: 22e8e9479d52a604abc938e32f8c8873, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 183156, guid: 22e8e9479d52a604abc938e32f8c8873, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
@@ -1710,6 +1709,11 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!4 &609317855 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -6085886658039450303, guid: 158e0d3d66af29f49b67ec3262198a22, type: 3}
+  m_PrefabInstance: {fileID: 1562311602}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &632217036
 GameObject:
   m_ObjectHideFlags: 0
@@ -1733,13 +1737,32 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 632217036}
-  m_LocalRotation: {x: 0.14339128, y: -0.82544386, z: 0.24386281, w: 0.48847973}
-  m_LocalPosition: {x: 2.3794916, y: 1.7548816, z: 1.5713944}
+  m_LocalRotation: {x: 0.1264136, y: -0.89316154, z: 0.23332511, w: 0.36309984}
+  m_LocalPosition: {x: 3.088, y: 1.658, z: 3.023}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 93823792}
-  m_RootOrder: 42
+  m_Father: {fileID: 609317855}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &926072589 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 183038, guid: 22e8e9479d52a604abc938e32f8c8873, type: 3}
+  m_PrefabInstance: {fileID: 294564708}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &926072594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 926072589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bb7743b6913ee2449100145d364327b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Mount: {fileID: 632217037}
+  Speed: 5
 --- !u!1 &952459663
 GameObject:
   m_ObjectHideFlags: 0
