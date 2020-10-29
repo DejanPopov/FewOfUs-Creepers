@@ -1726,7 +1726,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b55accfab2bf59b4aa4cbd5ac504f9e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WaypointNetwork: {fileID: 0}
+  WaypointNetwork: {fileID: 1517406117}
   CurrentIndex: 0
   HasPath: 0
   PathPending: 0
@@ -1748,7 +1748,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 5.6
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
