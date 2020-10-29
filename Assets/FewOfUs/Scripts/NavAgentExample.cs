@@ -70,6 +70,19 @@ public class NavAgentExample : MonoBehaviour
         float horizontal = (cross.y < 0) ? -cross.magnitude : cross.magnitude;
         horizontal = Mathf.Clamp(horizontal * 4.32f, -2.32f, 2.32f);
 
+        //If agents speed drops to 0 it gets set to 0.1
+        if (navAgent.desiredVelocity.magnitude < 1.0f)
+        {
+            navAgent.speed = 0.1f;
+            //Calculate turn of zombie
+            turnOnSpot = (int)Mathf.Sign(horizontal);
+        }
+        else
+        {
+            navAgent.speed = originalMaxSpeed;
+            turnOnSpot = 0;
+        }
+
         //Damping smoothes the values (0.1f)
         animator.SetFloat("Horizontal", horizontal, 0.1f, Time.deltaTime);
         animator.SetFloat("Vertical", navAgent.desiredVelocity.magnitude, 0.1f, Time.deltaTime);
