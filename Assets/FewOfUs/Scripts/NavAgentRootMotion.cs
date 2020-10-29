@@ -128,6 +128,12 @@ public class NavAgentRootMotion : MonoBehaviour
         }
     }
 
+    private void OnAnimatorMove()
+    {
+        transform.rotation = animator.rootRotation;
+        navAgent.velocity = animator.deltaPosition / Time.deltaTime;
+    }
+
     //Coroutine
     IEnumerator Jump(float duration)
     {
