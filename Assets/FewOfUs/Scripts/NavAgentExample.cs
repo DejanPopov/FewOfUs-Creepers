@@ -22,12 +22,15 @@ public class NavAgentExample : MonoBehaviour
     public AnimationCurve JumpCurve = new AnimationCurve();
 
     private NavMeshAgent navAgent = null;
+    //This is for zombie 
+    private Animator animator = null;
 
     // Start is called before the first frame update
     void Start()
     {
         //NavMesh agent reference
         navAgent = GetComponent<NavMeshAgent>();
+        animator = GetComponent<Animator>();
 
         //This code is to see for fun that if the animated enemy is not moving
         //but NavMeshAgent is moving then this is probably whats happend
@@ -53,12 +56,17 @@ public class NavAgentExample : MonoBehaviour
         PathStale = navAgent.isPathStale;
         PathStatus = navAgent.pathStatus;
 
+        //Cost between transforms for vector and velocity vector and normalize it
+        Vector3 cross = Vector3.Cross(transform.forward, navAgent.desiredVelocity.normalized);
+
+        //This will not be used on zombies!
         //This will be used for agent to start coroutine called JUMP
-        if (navAgent.isOnOffMeshLink)
+        /*if (navAgent.isOnOffMeshLink)
         {
             StartCoroutine(Jump(1.0f));
             return;
         }
+        */
 
         //!HasPath will be little buggy to use when agent is jumping across platforms
         //We can use this || PathStatus == NavMeshPathStatus.PathPartial into
