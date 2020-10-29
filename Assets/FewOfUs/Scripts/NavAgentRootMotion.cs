@@ -77,7 +77,9 @@ public class NavAgentRootMotion : MonoBehaviour
         //80 degress in single second turning
         smoothAngle = Mathf.MoveTowardsAngle(smoothAngle, angle, 80.0f * Time.deltaTime);
 
-        float speed = localDesiredVelocity.magnitude;
+        //How fast is zombie walking from it's point of view
+        float speed = localDesiredVelocity.z;
+
         animator.SetFloat("Angle", smoothAngle);
         animator.SetFloat("Speed", speed, 0.1f, Time.deltaTime);
         //This code is for NoRootMotion
