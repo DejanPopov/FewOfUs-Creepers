@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 23800000, guid: e517b4091de95c740820ead9d66bf8db, type: 2}
+--- !u!4 &93823792 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6500602636823564693, guid: 158e0d3d66af29f49b67ec3262198a22, type: 3}
+  m_PrefabInstance: {fileID: 1562311602}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &294564708
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1705,6 +1710,36 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &632217036
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 632217037}
+  m_Layer: 0
+  m_Name: Head Cam Mount
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &632217037
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 632217036}
+  m_LocalRotation: {x: 0.14339128, y: -0.82544386, z: 0.24386281, w: 0.48847973}
+  m_LocalPosition: {x: 2.3794916, y: 1.7548816, z: 1.5713944}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 93823792}
+  m_RootOrder: 42
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &952459663
 GameObject:
   m_ObjectHideFlags: 0
