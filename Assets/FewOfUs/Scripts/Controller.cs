@@ -20,7 +20,7 @@ public class Controller : MonoBehaviour
         float yAxis = Input.GetAxis("Vertical") * 5.66f;
 
         //Seting values from inputs
-        animator.SetFloat("Horizontal", xAxis);
-        animator.SetFloat("Vertical", yAxis);
+        animator.SetFloat("Horizontal", xAxis, 1.0f, Time.deltaTime);
+        animator.SetFloat("Vertical", yAxis, 1.0f, Time.deltaTime);
     }
 }
