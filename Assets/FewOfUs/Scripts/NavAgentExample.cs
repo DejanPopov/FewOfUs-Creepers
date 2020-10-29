@@ -75,7 +75,7 @@ public class NavAgentExample : MonoBehaviour
         // Vector3.Angle(transform.forward, navAgent.desiredVelocity) > 20.0f)
         //is for when agent stops and is turning. It will turn into infinity if dont get Angle property
         if (navAgent.desiredVelocity.magnitude < 1.0f && 
-            Vector3.Angle(transform.forward, navAgent.desiredVelocity) > 20.0f)
+            Vector3.Angle(transform.forward, navAgent.desiredVelocity) > 10.0f)
         {
             navAgent.speed = 0.1f;
             //Calculate turn of zombie
