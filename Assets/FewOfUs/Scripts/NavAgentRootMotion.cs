@@ -69,6 +69,11 @@ public class NavAgentRootMotion : MonoBehaviour
         PathStale = navAgent.isPathStale;
         PathStatus = navAgent.pathStatus;
 
+        //Trigonometry for angle
+        Vector3 localDesiredVelocity = transform.InverseTransformVector(navAgent.desiredVelocity);
+        //Multiply to get degress
+        float angle = Mathf.Atan2(localDesiredVelocity.x, localDesiredVelocity.y) * Mathf.Rad2Deg;
+
         //This code is for NoRootMotion
         /*
         //Cost between transforms for vector and velocity vector and normalize it
@@ -128,6 +133,7 @@ public class NavAgentRootMotion : MonoBehaviour
         }
     }
 
+    //Animiton rotation and position
     private void OnAnimatorMove()
     {
         transform.rotation = animator.rootRotation;
