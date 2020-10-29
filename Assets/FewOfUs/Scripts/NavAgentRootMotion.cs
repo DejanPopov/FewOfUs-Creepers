@@ -77,6 +77,9 @@ public class NavAgentRootMotion : MonoBehaviour
         //80 degress in single second turning
         smoothAngle = Mathf.MoveTowardsAngle(smoothAngle, angle, 80.0f * Time.deltaTime);
 
+        float speed = localDesiredVelocity.magnitude;
+        animator.SetFloat("Angle", smoothAngle);
+        animator.SetFloat("Speed", speed, 0.1f, Time.deltaTime);
         //This code is for NoRootMotion
         /*
         //Cost between transforms for vector and velocity vector and normalize it
