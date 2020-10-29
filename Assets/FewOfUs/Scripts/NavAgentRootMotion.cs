@@ -24,7 +24,7 @@ public class NavAgentRootMotion : MonoBehaviour
     private NavMeshAgent navAgent = null;
     //This is for zombie 
     private Animator animator = null;
-    private float originalMaxSpeed = 0;
+    //private float originalMaxSpeed = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -33,17 +33,21 @@ public class NavAgentRootMotion : MonoBehaviour
         navAgent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
 
+        //Test for NoRootMotion
+        /*
         if (navAgent)
         {
             originalMaxSpeed = navAgent.speed;
         }
+        */
 
         //This code is to see for fun that if the animated enemy is not moving
         //but NavMeshAgent is moving then this is probably whats happend
         /*
         navAgent.updatePosition = false;
+         */
         navAgent.updateRotation = false;
-        */
+        
 
         if (WaypointNetwork == null)
         {
@@ -57,7 +61,7 @@ public class NavAgentRootMotion : MonoBehaviour
     void Update()
     {
         //For turning of zombie on map
-        int turnOnSpot;
+        //int turnOnSpot;
 
         //Will show in inspector
         HasPath = navAgent.hasPath;
@@ -65,6 +69,8 @@ public class NavAgentRootMotion : MonoBehaviour
         PathStale = navAgent.isPathStale;
         PathStatus = navAgent.pathStatus;
 
+        //This code is for NoRootMotion
+        /*
         //Cost between transforms for vector and velocity vector and normalize it
         Vector3 cross = Vector3.Cross(transform.forward, navAgent.desiredVelocity.normalized);
         float horizontal = (cross.y < 0) ? -cross.magnitude : cross.magnitude;
@@ -92,6 +98,7 @@ public class NavAgentRootMotion : MonoBehaviour
         animator.SetFloat("Vertical", navAgent.desiredVelocity.magnitude, 0.1f, Time.deltaTime);
         //Trying to smoth the cornering animation
         animator.SetInteger("TurnOnSpot", turnOnSpot);
+        */
 
         //This will not be used on zombies!
         //This will be used for agent to start coroutine called JUMP
