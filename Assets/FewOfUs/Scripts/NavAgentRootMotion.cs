@@ -25,6 +25,7 @@ public class NavAgentRootMotion : MonoBehaviour
     //This is for zombie 
     private Animator animator = null;
     //private float originalMaxSpeed = 0;
+    private float smoothAngle = 0.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -73,6 +74,8 @@ public class NavAgentRootMotion : MonoBehaviour
         Vector3 localDesiredVelocity = transform.InverseTransformVector(navAgent.desiredVelocity);
         //Multiply to get degress
         float angle = Mathf.Atan2(localDesiredVelocity.x, localDesiredVelocity.y) * Mathf.Rad2Deg;
+        //80 degress in single second turning
+        smoothAngle = Mathf.MoveTowardsAngle(smoothAngle, angle, 80.0f * Time.deltaTime);
 
         //This code is for NoRootMotion
         /*
