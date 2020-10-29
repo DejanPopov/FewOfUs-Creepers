@@ -157,7 +157,9 @@ public class NavAgentRootMotion : MonoBehaviour
     //Animiton rotation and position
     private void OnAnimatorMove()
     {
-       // transform.rotation = animator.rootRotation;
+        if (MixedMode && !animator.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Locomotion"))
+        transform.rotation = animator.rootRotation;
+
         navAgent.velocity = animator.deltaPosition / Time.deltaTime;
     }
 
