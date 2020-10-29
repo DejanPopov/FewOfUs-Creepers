@@ -24,6 +24,7 @@ public class NavAgentExample : MonoBehaviour
     private NavMeshAgent navAgent = null;
     //This is for zombie 
     private Animator animator = null;
+    private float originalMaxSpeed = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +32,11 @@ public class NavAgentExample : MonoBehaviour
         //NavMesh agent reference
         navAgent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
+
+        if (navAgent)
+        {
+            originalMaxSpeed = navAgent.speed;
+        }
 
         //This code is to see for fun that if the animated enemy is not moving
         //but NavMeshAgent is moving then this is probably whats happend
@@ -50,6 +56,9 @@ public class NavAgentExample : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //For turning of zombie on map
+        int turnOnSpot;
+
         //Will show in inspector
         HasPath = navAgent.hasPath;
         PathPending = navAgent.pathPending;
@@ -59,11 +68,13 @@ public class NavAgentExample : MonoBehaviour
         //Cost between transforms for vector and velocity vector and normalize it
         Vector3 cross = Vector3.Cross(transform.forward, navAgent.desiredVelocity.normalized);
         float horizontal = (cross.y < 0) ? -cross.magnitude : cross.magnitude;
-        horizontal = Mathf.Clamp(horizontal * 2.32f, -2.32f, 2.32f);
+        horizontal = Mathf.Clamp(horizontal * 4.32f, -2.32f, 2.32f);
 
         //Damping smoothes the values (0.1f)
         animator.SetFloat("Horizontal", horizontal, 0.1f, Time.deltaTime);
         animator.SetFloat("Vertical", navAgent.desiredVelocity.magnitude, 0.1f, Time.deltaTime);
+        //Trying to smoth the cornering animation
+        animator.SetInteger("TurnOnSpot", turnOnSpot);
 
         //This will not be used on zombies!
         //This will be used for agent to start coroutine called JUMP
