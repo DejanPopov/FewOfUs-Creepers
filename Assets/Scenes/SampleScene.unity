@@ -1729,7 +1729,7 @@ MonoBehaviour:
   WaypointNetwork: {fileID: 1517406117}
   CurrentIndex: 0
   HasPath: 0
-  PathPending: 0
+  PathPending: 1
   PathStale: 0
   PathStatus: 2
   JumpCurve:
@@ -2099,7 +2099,7 @@ PrefabInstance:
     - target: {fileID: 5866666021909216657, guid: 158e0d3d66af29f49b67ec3262198a22, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 283dd635bfe76054593f7b0e6e02bb5d, type: 2}
+      objectReference: {fileID: 9100000, guid: 2804862f003ad8940b886b001df84188, type: 2}
     - target: {fileID: 5866666021909216657, guid: 158e0d3d66af29f49b67ec3262198a22, type: 3}
       propertyPath: m_ApplyRootMotion
       value: 0
