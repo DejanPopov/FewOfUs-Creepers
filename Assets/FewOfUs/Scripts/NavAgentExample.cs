@@ -71,7 +71,11 @@ public class NavAgentExample : MonoBehaviour
         horizontal = Mathf.Clamp(horizontal * 4.32f, -2.32f, 2.32f);
 
         //If agents speed drops to 0 it gets set to 0.1
-        if (navAgent.desiredVelocity.magnitude < 1.0f)
+        //This code 
+        // Vector3.Angle(transform.forward, navAgent.desiredVelocity) > 20.0f)
+        //is for when agent stops and is turning. It will turn into infinity if dont get Angle property
+        if (navAgent.desiredVelocity.magnitude < 1.0f && 
+            Vector3.Angle(transform.forward, navAgent.desiredVelocity) > 20.0f)
         {
             navAgent.speed = 0.1f;
             //Calculate turn of zombie
