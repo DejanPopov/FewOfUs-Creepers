@@ -1723,13 +1723,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 539571498}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b55accfab2bf59b4aa4cbd5ac504f9e3, type: 3}
+  m_Script: {fileID: 11500000, guid: cef2d7c8403d75949bd1bbd5000fb5d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   WaypointNetwork: {fileID: 1517406117}
   CurrentIndex: 0
   HasPath: 0
-  PathPending: 1
+  PathPending: 0
   PathStale: 0
   PathStatus: 2
   JumpCurve:
@@ -2102,7 +2102,7 @@ PrefabInstance:
       objectReference: {fileID: 9100000, guid: 2804862f003ad8940b886b001df84188, type: 2}
     - target: {fileID: 5866666021909216657, guid: 158e0d3d66af29f49b67ec3262198a22, type: 3}
       propertyPath: m_ApplyRootMotion
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 158e0d3d66af29f49b67ec3262198a22, type: 3}
