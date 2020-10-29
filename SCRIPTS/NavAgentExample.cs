@@ -1,10 +1,10 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
 [RequireComponent(typeof(NavMeshAgent))]
-public class NavAgentRootMotion : MonoBehaviour
+public class NavAgentExample : MonoBehaviour
 {
     //Option that we can assign Waypoint Network
     public AIWaypointNetwork WaypointNetwork = null;
@@ -93,7 +93,7 @@ public class NavAgentRootMotion : MonoBehaviour
         while (time <= duration)
         {
             float t = time / duration;
-            navAgent.transform.position = Vector3.Lerp(startPos, endPos, t)
+            navAgent.transform.position = Vector3.Lerp(startPos, endPos, t) 
                 + (JumpCurve.Evaluate(t) * Vector3.up);
             time += Time.deltaTime;
             yield return null;
@@ -104,7 +104,7 @@ public class NavAgentRootMotion : MonoBehaviour
     }
 
     //This function will make agent to waypoints 
-    void SetNextDestionation(bool increment)
+    void SetNextDestionation (bool increment)
     {
         if (!WaypointNetwork)
         {
