@@ -26,7 +26,7 @@ public class Controller : MonoBehaviour
         float xAxis = Input.GetAxis("Horizontal") * 2.32f;
         float yAxis = Input.GetAxis("Vertical") * 5.66f;
 
-
+        //Mouse attack
         if (Input.GetMouseButtonDown(0))
         {
             animator.SetTrigger(attackHash);
