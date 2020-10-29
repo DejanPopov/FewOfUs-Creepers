@@ -26,6 +26,7 @@ public class NavAgentRootMotion : MonoBehaviour
     private Animator animator = null;
     //private float originalMaxSpeed = 0;
     private float smoothAngle = 0.0f;
+    public bool MixedMode = true;
 
     // Start is called before the first frame update
     void Start()
@@ -85,9 +86,13 @@ public class NavAgentRootMotion : MonoBehaviour
 
         if (navAgent.desiredVelocity.sqrMagnitude > Mathf.Epsilon)
         {
-            Quaternion lookRotation = Quaternion.LookRotation(navAgent.desiredVelocity, Vector3.up);
-            //The 4th parameter should be Time.DeltaTIme
-            transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, 5.0f);
+            if (!MixedMode || (MixedMode && Mathf.Abs(angle) < 80.0f &&
+                animator.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Locomotion")))
+            {
+                Quaternion lookRotation = Quaternion.LookRotation(navAgent.desiredVelocity, Vector3.up);
+                //The 4th parameter should be Time.DeltaTime
+                transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, 5.0f);
+            }
         }
 
         //This code is for NoRootMotion
