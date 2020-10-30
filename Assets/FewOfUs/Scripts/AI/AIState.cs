@@ -23,7 +23,7 @@ public abstract class AIState : MonoBehaviour
 
     }
 
-    public virtual void OnUpdate()
+    public abstract AIStateType OnUpdate()
     {
 
     }
