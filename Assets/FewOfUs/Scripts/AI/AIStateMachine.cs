@@ -1,8 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//
-using System.Collections.Generic;
+
 
 //AI states enumeration
 public enum AIStateType
@@ -29,10 +28,15 @@ public enum AITargetType
 
 public struct AITarget
 {
+    //This is type of target
     private AITargetType type;
+    //Collider
     private Collider collider;
+    //Position in the world
     private Vector3 position;
+    //Distance from player
     private float distance;
+    //Time the target last ping'd
     private float time;
 
     public AITargetType typeT { get { return type; } }
@@ -40,6 +44,24 @@ public struct AITarget
     public Vector3 positionP { get { return position; } }
     public float distanceD { get { return distance; }  set {distance = value;}}
     public float timeT { get { return time; } }
+
+    public void Set(AITargetType t, Collider c, Vector3 p, float d)
+    {
+        type = t;
+        collider = c;
+        position = p;
+        distance = d;
+        time = Time.time;
+    }
+
+    public void Clear()
+    {
+        type = AITargetType.None;
+        collider = null;
+        position = Vector3.zero;
+        time = 0.0f;
+        distance = Mathf.Infinity;
+    }
 }
 public abstract class AIStateMachine : MonoBehaviour
 {
