@@ -29,6 +29,13 @@ public enum AITargetType
    Audio
 }
 
+public enum AITriggerEventType
+{
+    Enter,
+    Stay,
+    Exit
+}
+
 public struct AITarget
 {
     //This is type of target
@@ -117,9 +124,11 @@ public abstract class AIStateMachine : MonoBehaviour
         //Loop states and put them ion Dictionary
         foreach  (AIState state in states)
         {
-            if (state != null && states.ContainsKey(state.getStateType())) ;
+            if (state != null && !states.ContainsKey(state.getStateType())) ;
             {
                 states[state.GetStateType()] = state;
+
+                state.SetStateMachine(this);
             }
         }
     }
