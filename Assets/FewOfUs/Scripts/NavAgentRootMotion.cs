@@ -74,7 +74,7 @@ public class NavAgentRootMotion : MonoBehaviour
         //Trigonometry for angle
         Vector3 localDesiredVelocity = transform.InverseTransformVector(navAgent.desiredVelocity);
         //Multiply to get degress
-        float angle = Mathf.Atan2(localDesiredVelocity.x, localDesiredVelocity.y) * Mathf.Rad2Deg;
+        float angle = Mathf.Atan2(localDesiredVelocity.x, localDesiredVelocity.z) * Mathf.Rad2Deg;
         //80 degress in single second turning
         smoothAngle = Mathf.MoveTowardsAngle(smoothAngle, angle, 80.0f * Time.deltaTime);
 
@@ -183,6 +183,7 @@ public class NavAgentRootMotion : MonoBehaviour
             yield return null;
         }
 
+        navAgent.transform.position = endPos;
         //Agent will now know that he completed coruotine and will not stop
         navAgent.CompleteOffMeshLink();
     }
@@ -211,6 +212,6 @@ public class NavAgentRootMotion : MonoBehaviour
         }
 
 
-        CurrentIndex++;
+        CurrentIndex = nextWaypoint;
     }
 }
