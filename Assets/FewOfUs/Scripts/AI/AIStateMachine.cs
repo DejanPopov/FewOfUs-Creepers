@@ -2,17 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AIStateMachine : MonoBehaviour
+//AI states enumeration
+public enum AIStateType
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    None,
+    Idle,
+    Alerted,
+    Partol,
+    Attack,
+    Feeding,
+    Pursuit,
+    Dead
+}
+public abstract class AIStateMachine : MonoBehaviour
+{
+    
 }
