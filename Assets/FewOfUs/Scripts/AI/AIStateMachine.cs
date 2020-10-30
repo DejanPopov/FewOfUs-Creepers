@@ -83,6 +83,7 @@ public abstract class AIStateMachine : MonoBehaviour
     //When zombie enters some state we will store it in Dictionary thus knowing its state
     protected Dictionary<AIStateType, AIState> states = new Dictionary<AIStateType, AIState>();
     protected AITarget target = new AITarget();
+    protected AIState currentState = null;
 
     //AI state machine is gona often start in idle
     [SerializeField]
@@ -130,6 +131,15 @@ public abstract class AIStateMachine : MonoBehaviour
 
                 state.SetStateMachine(this);
             }
+        }
+
+        if (states.ContainsKey(currentStateType))
+        {
+            currentState = states[currentStateType];
+        }
+        else
+        {
+            currentState = null;
         }
     }
 
@@ -193,6 +203,27 @@ public abstract class AIStateMachine : MonoBehaviour
         }
     }
 
-    
+    protected virtual void Update()
+    {
+        if (currentState == null)
+        {
+            return;
+        }
+
+        AIStateType newStateType = currentState.OnUpdate();
+
+        if (newStateType != currentStateType)
+        {
+            AIState newState = null;
+
+            if (states.TryGetValue(newStateType, out newState))
+            {
+                currentState.OnEnterState();
+                newState.OnEnterState();
+                currentState = newState;
+            }
+
+        }
+    }
 }
  
