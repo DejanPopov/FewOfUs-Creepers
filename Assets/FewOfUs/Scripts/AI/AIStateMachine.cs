@@ -70,12 +70,16 @@ public abstract class AIStateMachine : MonoBehaviour
 {
     //Audio and visual threat
     public AITarget VisualThreat = new AITarget();
-    public AITarget AudioTarget = new AITarget();
+    public AITarget AudioThreat = new AITarget();
 
     //Dictionary for state types
     //When zombie enters some state we will store it in Dictionary thus knowing its state
     protected Dictionary<AIStateType, AIState> states = new Dictionary<AIStateType, AIState>();
     protected AITarget target = new AITarget();
+
+    //AI state machine is gona often start in idle
+    [SerializeField]
+    protected AIStateType currentStateType = AIStateType.Idle;
 
     [SerializeField]
     protected SphereCollider targetTrigger = null;
@@ -88,13 +92,23 @@ public abstract class AIStateMachine : MonoBehaviour
     protected float stoppingDistance = 1.0f;
 
     //Cashce reference
-    protected Animator animator = null;
-    protected NavMeshAgent navAgent = null;
-    protected Collider collider = null;
-    protected Transform transform = null;
+    protected Animator      animator =  null;
+    protected NavMeshAgent  navAgent =  null;
+    protected Collider      collider =  null;
+    protected Transform     transformT = null;
 
     public Animator animatorA { get {return animator; } }
     public NavMeshAgent navAgentN { get{ return navAgent; }}
+
+    //Cashe all components on the game object
+    protected virtual void Awake()
+    {
+        transformT = transform;
+        animator = GetComponent<Animator>();
+        navAgent = GetComponent<NavMeshAgent>();
+        collider = GetComponent<Collider>();
+
+    }
 
     protected virtual void Start()
     {
@@ -107,6 +121,18 @@ public abstract class AIStateMachine : MonoBehaviour
             {
                 states[state.GetStateType()] = state;
             }
+        }
+    }
+
+    protected virtual void FixedUpdate()
+    {
+        VisualThreat.Clear();
+        AudioThreat.Clear();
+
+        //If we have valid target, calculate target distance
+        if (target.typeT != AITargetType.None)
+        {
+            target.distanceD = Vector3.Distance(transform.position, target.positionP);
         }
     }
 
@@ -134,5 +160,30 @@ public abstract class AIStateMachine : MonoBehaviour
             targetTrigger.enabled = true;
         }
     }
+
+    public void SetTarget(AITargetType t, Collider c, Vector3 p, float d, float s)
+    {
+        target.Set(t, c, p, d);
+
+        if (targetTrigger != null)
+        {
+            targetTrigger.radius = s;
+            targetTrigger.transform.position = target.positionP;
+            targetTrigger.enabled = true;
+        }
+    }
+
+    //Clear target when in no use
+    public void ClearTarget()
+    {
+        target.Clear();
+
+        if (targetTrigger != null)
+        {
+            targetTrigger.enabled = false;
+        }
+    }
+
+    
 }
  
