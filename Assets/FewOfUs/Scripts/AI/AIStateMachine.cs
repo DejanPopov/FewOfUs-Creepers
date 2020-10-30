@@ -1,6 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Dynamic;
+using System.Runtime.Remoting.Messaging;
 using UnityEngine;
+using UnityEngine.AI;
 
 
 //AI states enumeration
@@ -65,9 +68,29 @@ public struct AITarget
 }
 public abstract class AIStateMachine : MonoBehaviour
 {
+    //Audio and visual threat
+    public AITarget VisualThreat = new AITarget();
+    public AITarget AudioTarget = new AITarget();
+
     //Dictionary for state types
     //When zombie enters some state we will store it in Dictionary thus knowing its state
-    private Dictionary<AIStateType, AIState> states = new Dictionary<AIStateType, AIState>();
+    protected Dictionary<AIStateType, AIState> states = new Dictionary<AIStateType, AIState>();
+    protected AITarget target = new AITarget();
+
+    [SerializeField]
+    protected SphereCollider targetTrigger = null;
+
+    [SerializeField]
+    protected SphereCollider sensorTrigger = null;
+
+    //Cashce reference
+    protected Animator animator = null;
+    protected NavMeshAgent navAgent = null;
+    protected Collider collider = null;
+    protected Transform transform = null;
+
+    public Animator animatorA { get {return animator; } }
+    public NavMeshAgent navAgentN { get{ return navAgent; }}
 
     protected virtual void Start()
     {
