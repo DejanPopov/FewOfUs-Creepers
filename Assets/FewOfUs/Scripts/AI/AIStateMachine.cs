@@ -83,6 +83,10 @@ public abstract class AIStateMachine : MonoBehaviour
     [SerializeField]
     protected SphereCollider sensorTrigger = null;
 
+    [SerializeField]
+    [Range(0, 15)]
+    protected float stoppingDistance = 1.0f;
+
     //Cashce reference
     protected Animator animator = null;
     protected NavMeshAgent navAgent = null;
@@ -103,6 +107,31 @@ public abstract class AIStateMachine : MonoBehaviour
             {
                 states[state.GetStateType()] = state;
             }
+        }
+    }
+
+    //This is trigger sphere on Jill
+    public void SetTarget(AITargetType t, Collider c, Vector3 p, float d)
+    {
+        target.Set(t, c, p, d);
+
+        if (targetTrigger != null)
+        {
+            targetTrigger.radius = stoppingDistance;
+            targetTrigger.transform.position = target.positionP;
+            targetTrigger.enabled = true;
+        }
+    }
+
+    public void SetTarget(AITarget t)
+    {
+        target = t;
+
+        if (targetTrigger != null)
+        {
+            targetTrigger.radius = stoppingDistance;
+            targetTrigger.transform.position = target.positionP;
+            targetTrigger.enabled = true;
         }
     }
 }
