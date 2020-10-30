@@ -136,6 +136,7 @@ public abstract class AIStateMachine : MonoBehaviour
         if (states.ContainsKey(currentStateType))
         {
             currentState = states[currentStateType];
+            currentState.OnEnterState();
         }
         else
         {
@@ -222,7 +223,15 @@ public abstract class AIStateMachine : MonoBehaviour
                 newState.OnEnterState();
                 currentState = newState;
             }
+            else 
+            if (states.TryGetValue(AIStateType.Idle, out newState))
+            {
+                currentState.OnEnterState();
+                newState.OnEnterState();
+                currentState = newState;
+            }
 
+            currentStateType = newStateType;
         }
     }
 }
