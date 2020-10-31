@@ -15,6 +15,7 @@ public class RootMotionConfigurator : AIStateMachineLink
     {
         if (stateMachineS)
         {
+            Debug.Log(stateMachineS.GetType().ToString());
             stateMachineS.AddRootMotionRequest(rootPosition, rootRotation);
         }
        // base.OnStateEnter(animator, stateInfo, layerIndex);
