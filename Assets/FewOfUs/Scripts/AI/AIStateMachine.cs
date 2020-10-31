@@ -206,6 +206,16 @@ public abstract class AIStateMachine : MonoBehaviour
         {
             currentState = null;
         }
+
+        if (animator)
+        {
+            AIStateMachineLink[] scripts = animator.GetBehaviours<AIStateMachineLink>();
+
+            foreach (AIStateMachineLink script in scripts)
+            {
+                script.stateMachine = this;
+            }
+        }
     }
 
     protected virtual void FixedUpdate()
