@@ -75,10 +75,10 @@ public class AIZombieStateMachine : AIStateMachine
 
         if (animator != null)
         {
-            animator.SetFloat("Speed", navAgent.speed);
-            animator.SetBool("Feeding", feeding);
-            animator.SetInteger("Seeking", seeking);
-            animator.SetInteger("Attack", attackType);
+            animator.SetFloat(speedHash, navAgent.speed);
+            animator.SetBool(feedingHash, feeding);
+            animator.SetInteger(seekingHash, seeking);
+            animator.SetInteger(attackHash, attackType);
             
         }
     }
