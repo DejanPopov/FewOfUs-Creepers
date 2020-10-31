@@ -265,7 +265,7 @@ public abstract class AIStateMachine : MonoBehaviour
 
     protected virtual void OnTriggerExit(Collider other)
     {
-        if (targetTrigger == null || other != targetTrigger)
+        if (targetTrigger == null || targetTrigger != other)
         {
             return;
         }
@@ -276,5 +276,13 @@ public abstract class AIStateMachine : MonoBehaviour
         }
     }
 
+    //Sensor is gona call this method
+    public virtual void OnTriggerEvent(AITriggerEventType type, Collider other)
+    {
+        if (currentState != null)
+        {
+            currentState.OnTriggerEvent(type, other);
+        }
+    }
 }
  
