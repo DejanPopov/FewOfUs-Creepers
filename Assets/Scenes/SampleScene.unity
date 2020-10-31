@@ -1815,6 +1815,22 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 158e0d3d66af29f49b67ec3262198a22, type: 3}
   m_PrefabInstance: {fileID: 1562311602}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &539571503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 539571498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33b34b0541dc457498b924e5d4646c1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentStateType: 1
+  targetTrigger: {fileID: 1251013359}
+  sensorTrigger: {fileID: 237165564}
+  stoppingDistance: 1
 --- !u!4 &609317855 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -6085886658039450303, guid: 158e0d3d66af29f49b67ec3262198a22, type: 3}
