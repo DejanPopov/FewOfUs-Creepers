@@ -63,4 +63,18 @@ public class AIZombieStateMachine : AIStateMachine
         }
     }
 
+    protected override void Update()
+    {
+        base.Update();
+
+        if (animator != null)
+        {
+            animator.SetFloat("Speed", navAgent.speed);
+            animator.SetBool("Feeding", feeding);
+            animator.SetInteger("Seeking", seeking);
+            animator.SetInteger("Attack", attackType);
+            
+        }
+    }
+
 }
