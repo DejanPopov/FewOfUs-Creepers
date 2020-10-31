@@ -9,10 +9,10 @@ public class AIZombieStateMachine : AIStateMachine
     float fov = 50.0f;
 
     [SerializeField]
-    [Range(10.0f, 360.0f)]
-    float sight = 50.0f;
+    [Range(0.0f, 1.0f)]
+    float sight = 0.5f;
 
     [SerializeField]
-    [Range(10.0f, 360.0f)]
-    float hearing = 50.0f;
+    [Range(0.0f, 1.0f)]
+    float hearing = 1.0f;
 }
