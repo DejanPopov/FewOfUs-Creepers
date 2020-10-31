@@ -327,5 +327,22 @@ public abstract class AIStateMachine : MonoBehaviour
             currentState.OnTriggerEvent(type, other);
         }
     }
+
+    protected virtual void OnAnimatorMove()
+    {
+        if (currentState != null)
+        {
+            currentState.OnAnimatorUpdated();
+        }
+    }
+
+    //Notify currently active state to contact animator
+    protected virtual void OnAnimatorIK(int layerIndex)
+    {
+        if (currentState != null)
+        {
+            currentState.OnAnimatorIKUpdated();
+        }
+    }
 }
  
