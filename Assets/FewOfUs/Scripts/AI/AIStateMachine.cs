@@ -344,5 +344,14 @@ public abstract class AIStateMachine : MonoBehaviour
             currentState.OnAnimatorIKUpdated();
         }
     }
+
+    public void NavAgentControll(bool positionUpdate, bool rotationUpdate)
+    {
+        if (navAgent)
+        {
+            navAgent.updatePosition = positionUpdate;
+            navAgent.updateRotation = rotationUpdate;
+        }
+    }
 }
  
