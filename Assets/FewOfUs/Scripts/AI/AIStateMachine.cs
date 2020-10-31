@@ -126,6 +126,23 @@ public abstract class AIStateMachine : MonoBehaviour
         }
     }
 
+    //Calculate raidus in 3D space of sensor trigger
+    public float sensorRadius
+    {
+        get
+        {
+            if (sensorTrigger == null)
+            {
+                return 0.0f;
+            }
+
+            float radius = Mathf.Max(sensorTrigger.radius * sensorTrigger.transform.lossyScale.x,
+                sensorTrigger.radius * sensorTrigger.transform.lossyScale.y);
+
+            return Mathf.Max(radius, sensorTrigger.radius * sensorTrigger.transform.lossyScale.z);
+        }
+    }
+
     //Cashe all components on the game object
     protected virtual void Awake()
     {
