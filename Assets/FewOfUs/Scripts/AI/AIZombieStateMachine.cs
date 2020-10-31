@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class AIZombieStateMachine : AIStateMachine
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField]
+    [Range(10.0f, 360.0f)]
+    float fov = 50.0f;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    [SerializeField]
+    [Range(10.0f, 360.0f)]
+    float sight = 50.0f;
+
+    [SerializeField]
+    [Range(10.0f, 360.0f)]
+    float hearing = 50.0f;
 }
