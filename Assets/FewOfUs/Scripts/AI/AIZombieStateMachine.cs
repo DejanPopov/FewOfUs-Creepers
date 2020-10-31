@@ -37,6 +37,12 @@ public class AIZombieStateMachine : AIStateMachine
     private bool crawling = false;
     private int attackType = 0;
 
+    //Hashes
+    private int speedHash = Animator.StringToHash("Speed");
+    private int seekingHash = Animator.StringToHash("Seeking");
+    private int feedingHash = Animator.StringToHash("Feeding");
+    private int attackHash = Animator.StringToHash("Attack");
+
     public float fovF { get { return fov; } }
     public float hearingH { get { return hearing; } }
     public float sightS { get { return sight; } }
