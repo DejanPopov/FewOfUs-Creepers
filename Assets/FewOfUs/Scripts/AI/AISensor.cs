@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class AISensor : MonoBehaviour
 {
+    private AIStateMachine parentStateMachine = null;
+    public AIStateMachine parentStateMachines { set { parentStateMachine = value; } }
+
     // Start is called before the first frame update
     void Start()
     {
