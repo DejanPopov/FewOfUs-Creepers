@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Dynamic;
+using System.Linq;
 using System.Runtime.Remoting.Messaging;
 using UnityEngine;
 using UnityEngine.AI;
@@ -81,7 +82,7 @@ public abstract class AIStateMachine : MonoBehaviour
 
     //Dictionary for state types
     //When zombie enters some state we will store it in Dictionary thus knowing its state
-    protected Dictionary<AIStateType, AIState> states = new Dictionary<AIStateType, AIState>();
+    protected Dictionary<AIStateType, AIState> statesS = new Dictionary<AIStateType, AIState>();
     protected AITarget target = new AITarget();
     protected AIState currentState = null;
 
@@ -125,17 +126,17 @@ public abstract class AIStateMachine : MonoBehaviour
         //Loop states and put them ion Dictionary
         foreach  (AIState state in states)
         {
-            if (state != null && !states.ContainsKey(state.getStateType())) ;
+            if (state != null && !statesS.ContainsKey(state.getStateType()));
             {
-                states[state.GetStateType()] = state;
+                statesS[state.getStateType()] = state;
 
                 state.SetStateMachine(this);
             }
         }
 
-        if (states.ContainsKey(currentStateType))
+        if (statesS.ContainsKey(currentStateType))
         {
-            currentState = states[currentStateType];
+            currentState = statesS[currentStateType];
             currentState.OnEnterState();
         }
         else
@@ -217,14 +218,14 @@ public abstract class AIStateMachine : MonoBehaviour
         {
             AIState newState = null;
 
-            if (states.TryGetValue(newStateType, out newState))
+            if (statesS.TryGetValue(newStateType, out newState))
             {
                 currentState.OnEnterState();
                 newState.OnEnterState();
                 currentState = newState;
             }
             else 
-            if (states.TryGetValue(AIStateType.Idle, out newState))
+            if (statesS.TryGetValue(AIStateType.Idle, out newState))
             {
                 currentState.OnEnterState();
                 newState.OnEnterState();
