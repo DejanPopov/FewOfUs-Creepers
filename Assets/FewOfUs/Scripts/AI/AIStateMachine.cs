@@ -135,6 +135,15 @@ public abstract class AIStateMachine : MonoBehaviour
 
     protected virtual void Start()
     {
+        if (sensorTrigger != null)
+        {
+            AISensor script = sensorTrigger.GetComponent<AISensor>();
+            if (script != null)
+            {
+                script.parentStateMachines = this;
+            }
+        }
+
         //Array for states
         AIState[] states = GetComponents<AIState>();
         //Loop states and put them ion Dictionary
