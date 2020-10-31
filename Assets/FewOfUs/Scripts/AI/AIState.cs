@@ -32,6 +32,11 @@ public abstract class AIState : MonoBehaviour
         {
             machineM.navAgentN.velocity = machineM.animatorA.deltaPosition / Time.deltaTime;
         }
+
+        if (machineM.useRootRotation)
+        {
+            machineM.transform.rotation = machineM.animatorA.rootRotation;
+        }
     }
 
     public virtual void OnAnimatorIKUpdated()
