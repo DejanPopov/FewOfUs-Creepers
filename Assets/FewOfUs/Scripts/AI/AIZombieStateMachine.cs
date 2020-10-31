@@ -15,4 +15,12 @@ public class AIZombieStateMachine : AIStateMachine
     [SerializeField]
     [Range(0.0f, 1.0f)]
     float hearing = 1.0f;
+
+    [SerializeField]
+    [Range(0.0f, 1.0f)]
+    float agression = 1.0f;
+
+    [SerializeField]
+    [Range(0.0f, 1.0f)]
+    float health = 1.0f;
 }
