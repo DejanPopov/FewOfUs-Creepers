@@ -85,6 +85,8 @@ public abstract class AIStateMachine : MonoBehaviour
     protected Dictionary<AIStateType, AIState> statesS = new Dictionary<AIStateType, AIState>();
     protected AITarget target = new AITarget();
     protected AIState currentState = null;
+    protected int rootPositionRefCount = 0;
+    protected int rootRotationRefCount = 0;
 
     //AI state machine is gona often start in idle
     [SerializeField]
@@ -142,6 +144,10 @@ public abstract class AIStateMachine : MonoBehaviour
             return Mathf.Max(radius, sensorTrigger.radius * sensorTrigger.transform.lossyScale.z);
         }
     }
+
+    public bool useRootPosition { get { return rootPositionRefCount < 0; } }
+    public bool useRootRotation { get { return rootRotationRefCount < 0; } }
+
 
     //Cashe all components on the game object
     protected virtual void Awake()
@@ -353,5 +359,10 @@ public abstract class AIStateMachine : MonoBehaviour
             navAgent.updateRotation = rotationUpdate;
         }
     }
+
+    public void AddRootMotionRequest( int rootPosition, int rootRotatation)
+    {
+        rootPositionRefCount += rootPosition;
+        rootRotationRefCount += rootRotatation;
+    }
 }
- 
