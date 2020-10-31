@@ -5,6 +5,20 @@ using UnityEngine;
 //GameSceneManager is to detect all colliders
 public class GameSceneManager : MonoBehaviour
 {
+    //Store reference
+    private static GameSceneManager instance = null;
+    public static GameSceneManager instanceI
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = (GameSceneManager)FindObjectOfType(typeof(GameSceneManager));
+            }
+            return instance;
+        }
+    }
+
     private Dictionary<int, AIStateMachine> stateMachines = new Dictionary<int, AIStateMachine>();
 
     //This is for AIState machine to register its colliders
