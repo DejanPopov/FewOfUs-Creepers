@@ -249,12 +249,17 @@ public abstract class AIStateMachine : MonoBehaviour
             currentStateType = newStateType;
         }
     }
-
+    //Called by physics system when enters main collidrs and its trigger
     protected virtual void OnTriggerEnter(Collider other)
     {
         if (targetTrigger == null || other != targetTrigger)
         {
             return;
+        }
+
+        if (currentState)
+        {
+            currentState.OnDestinationReached(true);
         }
     }
 
