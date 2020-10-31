@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class AIState : MonoBehaviour
 {
-    public abstract AIStateType GetStateType();
+    public abstract AIStateType getStateType();
     protected AIStateMachine machineM;
 
     public void SetStateMachine (AIStateMachine stateMachine)
@@ -23,10 +23,7 @@ public abstract class AIState : MonoBehaviour
 
     }
 
-    public abstract AIStateType OnUpdate()
-    {
-
-    }
+    public abstract AIStateType OnUpdate();
 
     public virtual void OnAnimatorUpdated()
     {
