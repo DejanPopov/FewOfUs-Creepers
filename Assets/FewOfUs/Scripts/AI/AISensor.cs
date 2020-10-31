@@ -7,15 +7,27 @@ public class AISensor : MonoBehaviour
     private AIStateMachine parentStateMachine = null;
     public AIStateMachine parentStateMachines { set { parentStateMachine = value; } }
 
-    // Start is called before the first frame update
-    void Start()
+    private void OnTriggerEnter(Collider col)
     {
-        
+        if (parentStateMachine != null)
+        {
+            parentStateMachine.OnTriggerEvent(AITriggerEventType.Enter, col);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerStay(Collider col)
     {
-        
+        if (parentStateMachine != null)
+        {
+            parentStateMachine.OnTriggerEvent(AITriggerEventType.Stay, col);
+        }
+    }
+
+    private void OnTriggerExit(Collider col)
+    {
+        if (parentStateMachine != null)
+        {
+            parentStateMachine.OnTriggerEvent(AITriggerEventType.Exit, col);
+        }
     }
 }
