@@ -256,10 +256,23 @@ public abstract class AIStateMachine : MonoBehaviour
         {
             return;
         }
-
+        //Notify child state
         if (currentState)
         {
             currentState.OnDestinationReached(true);
+        }
+    }
+
+    protected virtual void OnTriggerExit(Collider other)
+    {
+        if (targetTrigger == null || other != targetTrigger)
+        {
+            return;
+        }
+        //Notify child state
+        if (currentState)
+        {
+            currentState.OnDestinationReached(false);
         }
     }
 
