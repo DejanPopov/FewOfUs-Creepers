@@ -117,6 +117,20 @@ public abstract class AIStateMachine : MonoBehaviour
         navAgent = GetComponent<NavMeshAgent>();
         collider = GetComponent<Collider>();
 
+        //Activate sensor trigger and collider
+        if (GameSceneManager.instanceI != null)
+        {
+            if (collider) 
+            {
+                GameSceneManager.instanceI.RegisterAIStateMachine(collider.GetInstanceID(), this);
+            }
+
+            if(sensorTrigger)
+            {
+                GameSceneManager.instanceI.RegisterAIStateMachine(sensorTrigger.GetInstanceID(), this);
+            }
+        }
+
     }
 
     protected virtual void Start()
