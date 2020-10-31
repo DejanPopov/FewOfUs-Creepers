@@ -21,6 +21,14 @@ public class AIZombieStateMachine : AIStateMachine
     float agression = 1.0f;
 
     [SerializeField]
+    [Range(0, 100)]
+    int health = 100;
+
+    [SerializeField]
     [Range(0.0f, 1.0f)]
-    float health = 1.0f;
+    float intelligence = 0.5f;
+
+    [SerializeField]
+    [Range(0.0f, 1.0f)]
+    float satisfaction = 1.0f;
 }
