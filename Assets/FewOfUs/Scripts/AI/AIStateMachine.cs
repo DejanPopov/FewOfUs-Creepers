@@ -109,6 +109,23 @@ public abstract class AIStateMachine : MonoBehaviour
     public Animator animatorA { get {return animator; } }
     public NavMeshAgent navAgentN { get{ return navAgent; }}
 
+    public Vector3 sensorPosition
+    {
+        get
+        {
+            if (sensorTrigger == null)
+            {
+                return Vector3.zero;
+            }
+
+            Vector3 point = sensorTrigger.transform.position;
+            point.x += sensorTrigger.center.x * sensorTrigger.transform.lossyScale.x;
+            point.y += sensorTrigger.center.y * sensorTrigger.transform.lossyScale.y;
+            point.z += sensorTrigger.center.z * sensorTrigger.transform.lossyScale.z;
+            return point;
+        }
+    }
+
     //Cashe all components on the game object
     protected virtual void Awake()
     {
