@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditorInternal;
 using UnityEngine;
 
 public abstract class AIState : MonoBehaviour
@@ -27,7 +28,10 @@ public abstract class AIState : MonoBehaviour
 
     public virtual void OnAnimatorUpdated()
     {
-
+        if (machineM.useRootPosition)
+        {
+            machineM.navAgentN.velocity = machineM.animatorA.deltaPosition / Time.deltaTime;
+        }
     }
 
     public virtual void OnAnimatorIKUpdated()
