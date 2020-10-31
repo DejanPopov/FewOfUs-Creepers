@@ -1844,6 +1844,13 @@ MonoBehaviour:
   targetTrigger: {fileID: 1251013359}
   sensorTrigger: {fileID: 237165564}
   stoppingDistance: 1
+  fov: 10
+  sight: 0.83
+  hearing: 50
+  agression: 1
+  health: 100
+  intelligence: 0.5
+  satisfaction: 1
 --- !u!4 &609317855 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -6085886658039450303, guid: 158e0d3d66af29f49b67ec3262198a22, type: 3}
