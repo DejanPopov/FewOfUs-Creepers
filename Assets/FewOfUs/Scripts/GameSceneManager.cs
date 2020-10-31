@@ -2,17 +2,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//GameSceneManager is to detect all colliders
 public class GameSceneManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private Dictionary<int, AIStateMachine> stateMachines = new Dictionary<int, AIStateMachine>();
+
+    //This is for AIState machine to register its colliders
+    public void RegisterAIStateMachine(int key, AIStateMachine stateMachine)
     {
-        
+        if (! stateMachines.ContainsKey(key))
+        {
+            stateMachines[key] = stateMachine;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    //For objests in level
+    public AIStateMachine GetAIStateMachine(int key)
     {
-        
+        AIStateMachine machine = null;
+
+        if (stateMachines.TryGetValue(key, out machine))
+        {
+            return machine;
+        }
+        return null;
     }
 }
