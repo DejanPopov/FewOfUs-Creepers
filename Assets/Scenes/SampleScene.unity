@@ -133,6 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 237165563}
   - component: {fileID: 237165564}
+  - component: {fileID: 237165565}
   m_Layer: 10
   m_Name: Sensor
   m_TagString: Untagged
@@ -167,6 +168,18 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 20
   m_Center: {x: 0, y: 1.6, z: 0}
+--- !u!114 &237165565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 237165562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 160cceef90512f34d96ac76dfd906fa0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &294564708
 PrefabInstance:
   m_ObjectHideFlags: 0
