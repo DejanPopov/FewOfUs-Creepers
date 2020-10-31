@@ -249,5 +249,14 @@ public abstract class AIStateMachine : MonoBehaviour
             currentStateType = newStateType;
         }
     }
+
+    protected virtual void OnTriggerEnter(Collider other)
+    {
+        if (targetTrigger == null || other != targetTrigger)
+        {
+            return;
+        }
+    }
+
 }
  
