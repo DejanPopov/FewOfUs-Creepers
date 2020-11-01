@@ -27,7 +27,7 @@ public abstract class AIZombieState : AIState
 
             if (other.CompareTag("Player"))
             {
-                Vector3 distance = Vector3.Distance(machineM.sensorPosition, other.transform.position);
+                float distance = Vector3.Distance(machineM.sensorPosition, other.transform.position);
                 if (curType != AITargetType.Visual_Player || (curType == AITargetType.Visual_Player &&
                     distance < machineM.VisualThreat.distanceD))
                 {
