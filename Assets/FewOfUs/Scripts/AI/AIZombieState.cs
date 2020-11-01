@@ -69,15 +69,18 @@ public abstract class AIZombieState : AIState
 
         for (int i = 0; i < hits.Length; i++)
         {
-            RaycastHit hit = hits[i];
-            if (hit.distance < closestColliderDistance)
+            if (hitInfo.transform.gameObject.layer == bodyPartLayer)
             {
-                if (machineM != GameSceneManager.instanceI.GetAIStateMachine
-                    (hit.rigidbody.GetInstanceID()))
+                RaycastHit hit = hits[i];
+                if (hit.distance < closestColliderDistance)
                 {
-                    closestColliderDistance = hit.distance;
-                    closestCollider = hit.collider;
-                    hitInfo = hit;
+                    if (machineM != GameSceneManager.instanceI.GetAIStateMachine
+                        (hit.rigidbody.GetInstanceID()))
+                    {
+                        closestColliderDistance = hit.distance;
+                        closestCollider = hit.collider;
+                        hitInfo = hit;
+                    }
                 }
             }
             else
