@@ -23,7 +23,7 @@ public abstract class AIZombieState : AIState
 
         if (eventType != AITriggerEventType.Exit)
         {
-            AITargetType curType = machineM.VisualThreat;
+            AITargetType curType = machineM.VisualThreat.typeT;
 
             if (other.CompareTag("Player"))
             {
