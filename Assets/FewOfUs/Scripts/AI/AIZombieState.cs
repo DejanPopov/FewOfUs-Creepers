@@ -35,7 +35,7 @@ public abstract class AIZombieState : AIState
                     if (ColliderIsVisible(other, out hitInfo, playerLayerMask))
                     {
                         machineM.VisualThreat.Set(AITargetType.Visual_Player, other, other.transform.position,
-                            distance)
+                            distance);
                     }
                 }
             }
