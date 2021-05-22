@@ -15,7 +15,7 @@ public abstract class AIZombieState : AIState
         visualLayerMask = LayerMask.GetMask("Player", "AI Body Part", "Visual Aggravator") + 1;
         bodyPartLayer = LayerMask.GetMask("AI Body Part");
     }
-    public virtual void SetStateMachine(AIStateMachine stateMachine)
+    public override void SetStateMachine(AIStateMachine stateMachine)
     {
         if (stateMachine.GetType() == typeof(AIZombieStateMachine))
         {
@@ -56,14 +56,16 @@ public abstract class AIZombieState : AIState
                 if (other.CompareTag("Flash Light") && curType != AITargetType.Visual_Player)
                 {
                     BoxCollider flashLightTrigger = (BoxCollider)other;
-                    float distanceToThreat = Vector3.Distance(zombieStateMachine.sensorPosition, flashLightTrigger.transform.position);
+                    float distanceToThreat = Vector3.Distance(zombieStateMachine.sensorPosition, 
+                        flashLightTrigger.transform.position);
                     float zSize = flashLightTrigger.size.z * flashLightTrigger.transform.lossyScale.z;
                     float aggrFactor = distanceToThreat / zSize;
 
                     //if (aggrFactor <= zombieStateMachine.sight && aggrFactor <= zombieStateMachine.intelligence)
                     if (aggrFactor <= zombieStateMachine.sightS && aggrFactor <= zombieStateMachine.intelligenceI)
                     {
-                        zombieStateMachine.VisualThreat.Set(AITargetType.Visual_Light,other, other.transform.position, distanceToThreat);
+                        zombieStateMachine.VisualThreat.Set(AITargetType.Visual_Light,other, 
+                            other.transform.position, distanceToThreat);
                     }
                 }
                 else
@@ -102,7 +104,8 @@ public abstract class AIZombieState : AIState
                         if(distanceToThreat < zombieStateMachine.AudioThreat.distanceD)
                         {
                             //Most dangerous audio threat
-                            zombieStateMachine.AudioThreat.Set(AITargetType.Audio, other, soundPos, distanceToThreat);
+                            zombieStateMachine.AudioThreat.Set(AITargetType.Audio, other, soundPos, 
+                                distanceToThreat);
                         }
                     }
                     else
@@ -111,7 +114,8 @@ public abstract class AIZombieState : AIState
                             curType!=AITargetType.Visual_Light && zombieStateMachine.satisfactionS <= 0.9f 
                             && zombieStateMachine.AudioThreat.typeT==AITargetType.None)
                         {
-                            float distanceToThreat = Vector3.Distance(other.transform.position, zombieStateMachine.sensorPosition);
+                            float distanceToThreat = Vector3.Distance(other.transform.position, 
+                                zombieStateMachine.sensorPosition);
 
                             if(distanceToThreat <zombieStateMachine.VisualThreat.distanceD)
                             {
