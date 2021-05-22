@@ -30,7 +30,8 @@ public class AIZombieState_Idle1 : AIZombieState
         zombieStateMachine.speedS = 0;
         zombieStateMachine.seekingS = 0;
         zombieStateMachine.feddingF = false;
-
+        zombieStateMachine.attackTypeA = 0;
+        zombieStateMachine.ClearTarget();
     }
     public override AIStateType getStateType()
     {
