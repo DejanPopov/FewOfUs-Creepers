@@ -56,6 +56,13 @@ public abstract class AIZombieState : AIState
                     BoxCollider flashLightTrigger = (BoxCollider)other;
                     float distanceToThreat = Vector3.Distance(zombieStateMachine.sensorPosition, flashLightTrigger.transform.position);
                     float zSize = flashLightTrigger.size.z * flashLightTrigger.transform.lossyScale.z;
+                    float aggrFactor = distanceToThreat / zSize;
+
+                    //if (aggrFactor <= zombieStateMachine.sight && aggrFactor <= zombieStateMachine.intelligence)
+                    if (aggrFactor <= zombieStateMachine.sightS && aggrFactor <= zombieStateMachine.intelligenceI)
+                    {
+                        zombieStateMachine.VisualThreat.Set(AITargetType.Visual_Light,other, other.transform.position, distanceToThreat);
+                    }
                 }
             }
         }
