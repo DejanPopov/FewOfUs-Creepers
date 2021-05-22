@@ -189,7 +189,7 @@ public abstract class AIStateMachine : MonoBehaviour
         //Loop states and put them ion Dictionary
         foreach  (AIState state in states)
         {
-            if (state != null && !statesS.ContainsKey(state.getStateType()));
+            if (state != null && !statesS.ContainsKey(state.getStateType()))
             {
                 statesS[state.getStateType()] = state;
 
