@@ -64,7 +64,23 @@ public abstract class AIZombieState : AIState
                         zombieStateMachine.VisualThreat.Set(AITargetType.Visual_Light,other, other.transform.position, distanceToThreat);
                     }
                 }
+                else
+                {
+                    //Sound (player can use to distract zombie)
+                    if (other.CompareTag ("AI Sound Emitter"))
+                    {
+                        SphereCollider soundTrigger = (SphereCollider)other;
+                        
+                        if (soundTrigger == null)
+                        {
+                            return;
+                        }
+
+                        Vector3 agentSensorPosition = zombieStateMachine.sensorPosition;
+                    }
+                }
             }
+            
         }
        // base.OnTriggerEvent(eventType, other);
     }
