@@ -6,6 +6,7 @@ using UnityEngine;
 public abstract class AIState : MonoBehaviour
 {
     public abstract AIStateType getStateType();
+
     protected AIStateMachine machineM;
 
     public virtual void SetStateMachine (AIStateMachine stateMachine)

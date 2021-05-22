@@ -2,17 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AIZombieState_Idle1 : MonoBehaviour
+public class AIZombieState_Idle1 : AIZombieState
 {
-    // Start is called before the first frame update
-    void Start()
+    public override AIStateType OnUpdate()
     {
-        
+        Debug.Log("State type beeing fetched by state machine");
+        return AIStateType.Idle;
+    }
+    public override AIStateType getStateType()
+    {
+
+        return AIStateType.Idle;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
