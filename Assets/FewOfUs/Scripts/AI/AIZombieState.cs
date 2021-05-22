@@ -48,6 +48,16 @@ public abstract class AIZombieState : AIState
                     }
                 }
             }
+            else
+            {
+                //FlashLight
+                if (other.CompareTag("Flash Light") && curType != AITargetType.Visual_Player)
+                {
+                    BoxCollider flashLightTrigger = (BoxCollider)other;
+                    float distanceToThreat = Vector3.Distance(zombieStateMachine.sensorPosition, flashLightTrigger.transform.position);
+                    float zSize = flashLightTrigger.size.z * flashLightTrigger.transform.lossyScale.z;
+                }
+            }
         }
        // base.OnTriggerEvent(eventType, other);
     }
