@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Dynamic;
 using System.Linq;
-using System.Runtime.Remoting.Messaging;
+//using System.Runtime.Remoting.Messaging;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -145,8 +145,8 @@ public abstract class AIStateMachine : MonoBehaviour
         }
     }
 
-    public bool useRootPosition { get { return rootPositionRefCount < 0; } }
-    public bool useRootRotation { get { return rootRotationRefCount < 0; } }
+    public bool useRootPosition { get { return rootPositionRefCount > 0; } } // It was <
+    public bool useRootRotation { get { return rootRotationRefCount > 0; } } // It was <
 
 
     //Cashe all components on the game object

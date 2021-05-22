@@ -6,11 +6,20 @@ public abstract class AIZombieState : AIState
 {
     protected int playerLayerMask = -1;
     protected int bodyPartLayer = -1;
+    protected AIZombieStateMachine zombieStateMachine = null;
 
     private void Awake()
     {
         playerLayerMask = LayerMask.GetMask("Player","AI Body Part") + 1;
         bodyPartLayer = LayerMask.GetMask("AI Body Part");
+    }
+    public virtual void SetStateMachine(AIStateMachine stateMachine)
+    {
+        if (stateMachine.GetType() == typeof(AIZombieStateMachine))
+        {
+            base.SetStateMachine(stateMachine);
+            zombieStateMachine = (AIZombieStateMachine)stateMachine;
+        }
     }
 
     public override void OnTriggerEvent(AITriggerEventType eventType, Collider other)
@@ -69,9 +78,9 @@ public abstract class AIZombieState : AIState
 
         for (int i = 0; i < hits.Length; i++)
         {
+            RaycastHit hit = hits[i];
             if (hitInfo.transform.gameObject.layer == bodyPartLayer)
             {
-                RaycastHit hit = hits[i];
                 if (hit.distance < closestColliderDistance)
                 {
                     if (machineM != GameSceneManager.instanceI.GetAIStateMachine

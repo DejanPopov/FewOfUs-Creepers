@@ -8,7 +8,7 @@ public abstract class AIState : MonoBehaviour
     public abstract AIStateType getStateType();
     protected AIStateMachine machineM;
 
-    public void SetStateMachine (AIStateMachine stateMachine)
+    public virtual void SetStateMachine (AIStateMachine stateMachine)
     {
         machineM = stateMachine;
     }
