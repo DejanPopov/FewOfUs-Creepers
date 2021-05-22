@@ -6,11 +6,13 @@ public abstract class AIZombieState : AIState
 {
     protected int playerLayerMask = -1;
     protected int bodyPartLayer = -1;
+    protected int visualLayerMask = -1; 
     protected AIZombieStateMachine zombieStateMachine = null;
 
     private void Awake()
     {
         playerLayerMask = LayerMask.GetMask("Player","AI Body Part") + 1;
+        visualLayerMask = LayerMask.GetMask("Player", "AI Body Part", "Visual Aggravator") + 1;
         bodyPartLayer = LayerMask.GetMask("AI Body Part");
     }
     public virtual void SetStateMachine(AIStateMachine stateMachine)
@@ -43,8 +45,8 @@ public abstract class AIZombieState : AIState
                     RaycastHit hitInfo;
                     if (ColliderIsVisible(other, out hitInfo, playerLayerMask))
                     {
-                        zombieStateMachine.VisualThreat.Set(AITargetType.Visual_Player, other, other.transform.position,
-                            distance);
+                        zombieStateMachine.VisualThreat.Set(AITargetType.Visual_Player, other, 
+                            other.transform.position,distance);
                     }
                 }
             }
@@ -101,6 +103,27 @@ public abstract class AIZombieState : AIState
                         {
                             //Most dangerous audio threat
                             zombieStateMachine.AudioThreat.Set(AITargetType.Audio, other, soundPos, distanceToThreat);
+                        }
+                    }
+                    else
+                    {
+                        if (other.CompareTag ("AI Food") && curType!= AITargetType.Visual_Player && 
+                            curType!=AITargetType.Visual_Light && zombieStateMachine.satisfactionS <= 0.9f 
+                            && zombieStateMachine.AudioThreat.typeT==AITargetType.None)
+                        {
+                            float distanceToThreat = Vector3.Distance(other.transform.position, zombieStateMachine.sensorPosition);
+
+                            if(distanceToThreat <zombieStateMachine.VisualThreat.distanceD)
+                            {
+                                //AI sight
+                                RaycastHit hitInfo;
+                                if (ColliderIsVisible(other, out hitInfo, visualLayerMask))
+                                {
+                                    zombieStateMachine.VisualThreat.Set(AITargetType.Visual_Food, other, 
+                                        other.transform.position, distanceToThreat);
+
+                                }
+                            }
                         }
                     }
                 }
