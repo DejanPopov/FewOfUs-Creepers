@@ -65,12 +65,7 @@ public class AIZombieState_Idle1 : AIZombieState
     }
     public override AIStateType getStateType()
     {
-        if (zombieStateMachine == null)
-        {
             return AIStateType.Idle;
-        }
-        if (zombieStateMachine.VisualThreat.typeT == AITargetType.Visual_Player)
-        return AIStateType.Idle;
     }
 
 }
