@@ -77,6 +77,31 @@ public abstract class AIZombieState : AIState
                         }
 
                         Vector3 agentSensorPosition = zombieStateMachine.sensorPosition;
+
+                        Vector3 soundPos;
+                        float soundRadius;
+                        AIState.ConvertSphereColliderToWorldSpace(soundTrigger, out soundPos, out soundRadius);
+
+                        //How far inside sound radius we are
+                        float distanceToThreat = (soundPos - agentSensorPosition).magnitude;
+
+                        //Zombie hearing the sound
+                        float distanceFactor = (distanceToThreat / soundRadius);
+
+                        //Factor based on hearing ability of agent
+                        distanceFactor += distanceFactor * (1.0f - zombieStateMachine.hearingH);
+
+                        //Sound too far away
+                        if (distanceFactor > 1.0f)
+                        {
+                            return;
+                        }
+
+                        if(distanceToThreat < zombieStateMachine.AudioThreat.distanceD)
+                        {
+                            //Most dangerous audio threat
+                            zombieStateMachine.AudioThreat.Set(AITargetType.Audio, other, soundPos, distanceToThreat);
+                        }
                     }
                 }
             }
