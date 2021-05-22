@@ -25,25 +25,25 @@ public abstract class AIZombieState : AIState
     public override void OnTriggerEvent(AITriggerEventType eventType, Collider other)
     {
         
-        if (machineM == null)
+        if (zombieStateMachine == null)
         {
             return;
         }
 
         if (eventType != AITriggerEventType.Exit)
         {
-            AITargetType curType = machineM.VisualThreat.typeT;
+            AITargetType curType = zombieStateMachine.VisualThreat.typeT;
 
             if (other.CompareTag("Player"))
             {
-                float distance = Vector3.Distance(machineM.sensorPosition, other.transform.position);
+                float distance = Vector3.Distance(zombieStateMachine.sensorPosition, other.transform.position);
                 if (curType != AITargetType.Visual_Player || (curType == AITargetType.Visual_Player &&
-                    distance < machineM.VisualThreat.distanceD))
+                    distance < zombieStateMachine.VisualThreat.distanceD))
                 {
                     RaycastHit hitInfo;
                     if (ColliderIsVisible(other, out hitInfo, playerLayerMask))
                     {
-                        machineM.VisualThreat.Set(AITargetType.Visual_Player, other, other.transform.position,
+                        zombieStateMachine.VisualThreat.Set(AITargetType.Visual_Player, other, other.transform.position,
                             distance);
                     }
                 }
