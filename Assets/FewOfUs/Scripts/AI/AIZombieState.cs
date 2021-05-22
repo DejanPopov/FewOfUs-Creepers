@@ -55,7 +55,10 @@ public abstract class AIZombieState : AIState
     protected virtual bool ColliderIsVisible(Collider other, out RaycastHit hitInfo, int layerMask = -1)
     {
         hitInfo = default;
-        if (zombieStateMachine == null) false;
+        if (zombieStateMachine == null)
+        {
+            return false;
+        }
 
         Vector3 head = machineM.sensorPosition;
         Vector3 direction = other.transform.position = head;
