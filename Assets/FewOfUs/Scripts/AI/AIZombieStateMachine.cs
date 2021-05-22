@@ -30,12 +30,13 @@ public class AIZombieStateMachine : AIStateMachine
 
     [SerializeField]
     [Range(0.0f, 1.0f)]
-    float satisfaction = 1.0f;
+    float satisfaction = 1.0f; 
 
     private int seeking = 0;
     private bool feeding = false;
     private bool crawling = false;
     private int attackType = 0;
+    private float speed = 0.0f;
 
     //Hashes
     private int speedHash = Animator.StringToHash("Speed");
@@ -58,14 +59,11 @@ public class AIZombieStateMachine : AIStateMachine
     {
         get
         {
-            return navAgent != null ? navAgent.speed : 0.0f;
+            return speed;
         }
         set
         {
-            if (navAgent != null)
-            {
-                navAgent.speed = value;
-            }
+            speed = value;
         }
     }
 
