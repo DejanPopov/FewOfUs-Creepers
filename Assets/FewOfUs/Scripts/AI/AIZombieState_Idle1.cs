@@ -9,8 +9,38 @@ public class AIZombieState_Idle1 : AIZombieState
 
     private float idleTime = 0.0f;
     private float timer = 0.0f;
+
     public override AIStateType OnUpdate()
     {
+        if (zombieStateMachine == null)
+        {
+            return AIStateType.Idle;
+        }
+        if (zombieStateMachine.VisualThreat.typeT == AITargetType.Visual_Player)
+        {
+            zombieStateMachine.SetTarget(zombieStateMachine.VisualThreat);
+            return AIStateType.Pursuit;
+        }
+        if (zombieStateMachine.VisualThreat.typeT == AITargetType.Visual_Light)
+        {
+            zombieStateMachine.SetTarget(zombieStateMachine.VisualThreat);
+            return AIStateType.Alerted;
+        }
+        if (zombieStateMachine.AudioThreat.typeT == AITargetType.Audio)
+        {
+            zombieStateMachine.SetTarget(zombieStateMachine.AudioThreat);
+            return AIStateType.Alerted;
+        }
+        if (zombieStateMachine.VisualThreat.typeT == AITargetType.Visual_Food)
+        {
+            zombieStateMachine.SetTarget(zombieStateMachine.VisualThreat);
+            return AIStateType.Pursuit;
+        }
+        timer += Time.deltaTime;
+        if (timer > idleTime)
+        {
+            return AIStateType.Partol;
+        }
 
         return AIStateType.Idle;
     }
@@ -35,7 +65,11 @@ public class AIZombieState_Idle1 : AIZombieState
     }
     public override AIStateType getStateType()
     {
-
+        if (zombieStateMachine == null)
+        {
+            return AIStateType.Idle;
+        }
+        if (zombieStateMachine.VisualThreat.typeT == AITargetType.Visual_Player)
         return AIStateType.Idle;
     }
 
