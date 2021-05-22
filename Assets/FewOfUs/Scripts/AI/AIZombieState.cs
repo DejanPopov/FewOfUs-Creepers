@@ -55,22 +55,18 @@ public abstract class AIZombieState : AIState
     protected virtual bool ColliderIsVisible(Collider other, out RaycastHit hitInfo, int layerMask = -1)
     {
         hitInfo = default;
-        if (machineM == null || machineM.GetType() != typeof(AIZombieStateMachine))
-        {
-            return false;
-        }
-        AIZombieStateMachine zombieMachine = (AIZombieStateMachine)machineM;
+        if (zombieStateMachine == null) false;
 
         Vector3 head = machineM.sensorPosition;
         Vector3 direction = other.transform.position = head;
         float angle = Vector3.Angle(direction, transform.forward);
 
-        if (angle > zombieMachine.fovF * 0.5f)
+        if (angle > zombieStateMachine.fovF * 0.5f)
         {
             return false;
         }
-        RaycastHit[] hits = Physics.RaycastAll(head, direction.normalized, machineM.sensorRadius
-            * zombieMachine.sightS, layerMask);
+        RaycastHit[] hits = Physics.RaycastAll(head, direction.normalized, zombieStateMachine.sensorRadius
+            * zombieStateMachine.sightS, layerMask);
 
         //Find closest collider that is not AI part body
         float closestColliderDistance = float.MaxValue;
