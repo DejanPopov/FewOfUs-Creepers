@@ -1852,6 +1852,19 @@ MonoBehaviour:
   health: 100
   intelligence: 0.5
   satisfaction: 1
+--- !u!114 &539571504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 539571498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2514746b9939d24d8cf93d5e6abd030, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waypoinyNetwork: {fileID: 1517406117}
 --- !u!114 &539571505
 MonoBehaviour:
   m_ObjectHideFlags: 0
