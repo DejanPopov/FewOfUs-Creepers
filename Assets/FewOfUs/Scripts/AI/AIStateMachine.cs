@@ -147,6 +147,7 @@ public abstract class AIStateMachine : MonoBehaviour
 
     public bool useRootPosition { get { return rootPositionRefCount > 0; } } // It was <
     public bool useRootRotation { get { return rootRotationRefCount > 0; } } // It was <
+    public AITargetType targetType { get { return targetType; } }
 
 
     //Cashe all components on the game object
