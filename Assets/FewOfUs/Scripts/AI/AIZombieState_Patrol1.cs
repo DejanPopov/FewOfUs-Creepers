@@ -49,7 +49,7 @@ public class AIZombieState_Patrol1 : AIZombieState
                 }
 
                 zombieStateMachine.navAgentN.SetDestination(waypoint.position);
-                
+
             }
         }
 
@@ -58,6 +58,23 @@ public class AIZombieState_Patrol1 : AIZombieState
 
     public override AIStateType OnUpdate()
     {
+        if (zombieStateMachine.VisualThreat.typeT == AITargetType.Visual_Player)
+        {
+            zombieStateMachine.SetTarget(zombieStateMachine.VisualThreat);
+            return AIStateType.Pursuit;
+        }
+        if (zombieStateMachine.VisualThreat.typeT == AITargetType.Visual_Light)
+        {
+            zombieStateMachine.SetTarget(zombieStateMachine.VisualThreat);
+            return AIStateType.Alerted; 
+        }
+        if (zombieStateMachine.VisualThreat.typeT == AITargetType.Visual_Light)
+        {
+            zombieStateMachine.SetTarget(zombieStateMachine.AudioThreat);
+            return AIStateType.Alerted;
+        }
+
         return AIStateType.Partol;
     }
 }
+
