@@ -9,6 +9,7 @@ public class AIZombieState_Patrol1 : AIZombieState
     [SerializeField] bool randomPatrol = false;
     [SerializeField] int currentWaypoint = 0;
     [SerializeField] [Range(0.0f, 3.0f)] float speed = 1.0f;
+    [SerializeField] float turnOnSpotThreshold = 80.0f;
 
     public override AIStateType getStateType()
     {
@@ -68,12 +69,27 @@ public class AIZombieState_Patrol1 : AIZombieState
             zombieStateMachine.SetTarget(zombieStateMachine.VisualThreat);
             return AIStateType.Alerted; 
         }
-        if (zombieStateMachine.VisualThreat.typeT == AITargetType.Visual_Light)
+        if (zombieStateMachine.VisualThreat.typeT == AITargetType.Audio)
         {
             zombieStateMachine.SetTarget(zombieStateMachine.AudioThreat);
             return AIStateType.Alerted;
         }
+        if (zombieStateMachine.VisualThreat.typeT == AITargetType.Visual_Food)
+        {
+            if ((1.0f - zombieStateMachine.satisfactionS) > (zombieStateMachine.VisualThreat.distanceD
+                    / zombieStateMachine.sensorRadius))
+            {
+                zombieStateMachine.SetTarget(zombieStateMachine.VisualThreat);
+                return AIStateType.Pursuit;
+            }
+        }
 
+        float angle = AIState.FindSignedAngle(zombieStateMachine.transform.forward,
+            (zombieStateMachine.navAgentN.steeringTarget - zombieStateMachine.transform.position));
+        if (Mathf.Abs(angle) > turnOnSpotThreshold)
+        {
+            return AIStateType.Alerted;
+        }
         return AIStateType.Partol;
     }
 }

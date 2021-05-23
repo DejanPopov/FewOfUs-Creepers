@@ -61,6 +61,7 @@ public abstract class AIState : MonoBehaviour
 
         radius = Mathf.Max(radius, col.radius * col.transform.lossyScale.z);
     }
+
     public static float FindSignedAngle(Vector3 fromVector, Vector3 toVector)
     {
         if(fromVector == toVector)
