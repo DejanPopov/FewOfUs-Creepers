@@ -84,11 +84,16 @@ public class AIZombieState_Patrol1 : AIZombieState
             }
         }
 
-        float angle = AIState.FindSignedAngle(zombieStateMachine.transform.forward,
+        float angle = Vector3.Angle(zombieStateMachine.transform.forward,
             (zombieStateMachine.navAgentN.steeringTarget - zombieStateMachine.transform.position));
-        if (Mathf.Abs(angle) > turnOnSpotThreshold)
+        if (angle > turnOnSpotThreshold)
         {
             return AIStateType.Alerted;
+        }
+        if (!zombieStateMachine.useRootRotation)
+        {
+            Quaternion newRoot = Quaternion.LookRotation(zombieStateMachine.navAgentN.desiredVelocity);
+            zombieStateMachine.transform.rotation = Quaternion.Slerp(stateMachine.tr)
         }
         return AIStateType.Partol;
     }
